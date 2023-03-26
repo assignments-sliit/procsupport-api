@@ -12,6 +12,13 @@ const cors = require("cors");
 app.use(cors());
 app.use(express.json());
 
+//routes
+const userRoutes = require("./components/auth/routes/userRoutes");
+
+//endpoints
+app.use("/api/users", userRoutes);
+
+//cors
 app.all((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
