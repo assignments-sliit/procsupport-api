@@ -129,6 +129,11 @@ exports.login = (req, res) => {
             code: "AUTH_FAILED",
           });
         });
+      } else {
+        res.status(404).json({
+          error: "User not found!",
+          code: "USER_NOT_FOUND",
+        });
       }
     })
     .catch((err) => {
