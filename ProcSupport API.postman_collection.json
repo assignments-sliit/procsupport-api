@@ -1,0 +1,1305 @@
+{
+	"info": {
+		"_postman_id": "25dfa1d1-1aad-4ab0-988f-b211975582ec",
+		"name": "ProcSupport API",
+		"description": "API Documentation for ProcSupport - Procurement System for ESAD Module",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7305384"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create User",
+					"item": [
+						{
+							"name": "Create Admin User",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"johndoe1\",\r\n    \"usertype\":\"ADMIN\",\r\n    \"password\":\"j0hnD03\",\r\n    \"name\":\"John Mudiyanselage\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/users/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create New User - REQUESTOR",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"linisha12\",\r\n    \"usertype\":\"REQUESTOR\",\r\n    \"password\":\"linitha12\",\r\n    \"name\":\"Linisha12\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/users/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create New User - RECEIVER",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"beenu\",\r\n    \"usertype\":\"RECEIVER\",\r\n    \"password\":\"beenu123\",\r\n    \"name\":\"Branave D.\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/users/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create New User - APPROVER",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"sapna\",\r\n    \"usertype\":\"APPROVER\",\r\n    \"password\":\"sapna\",\r\n    \"name\":\"Sapna Shehani\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/users/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create New User - PURCHASER",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"amashi\",\r\n    \"usertype\":\"PURCHASER\",\r\n    \"password\":\"amashi\",\r\n    \"name\":\"Amashi Sandunika\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/users/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get User by Username",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/users/find/username/beenu",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"find",
+								"username",
+								"beenu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"linisha12\",\r\n    \"password\":\"linitha12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/users/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Type",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/users/get/type/polroti",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"get",
+								"type",
+								"polroti"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check User Type",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"polroti\",\r\n    \"usertype\":\"ADMIN\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/users/type/check",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"type",
+								"check"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User type from token",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNDY3Y2RkODY0ODljOWQ3MmE2MTQ3NSIsInVzZXJuYW1lIjoibHVudW1pcmlzIiwidXNlcnR5cGUiOiJBRE1JTiIsImlhdCI6MTY2NTY4MDk5NCwiZXhwIjoxNjY1NzY3Mzk0fQ.YUFZm1E86hqabdkIuMkNLLdXRozC_9gOtTRLQM11_BI\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/users//get/usertype/token",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"",
+								"get",
+								"usertype",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Users",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"johndoe1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/users/delete/one",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"delete",
+								"one"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find All users for Admin View",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/users/admin/get/all",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"admin",
+								"get",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Budget",
+			"item": [
+				{
+					"name": "Add Budget Amount",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\":50000\r\n   \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/budget/add",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"budget",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Total Budget",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/budget/get/total",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"budget",
+								"get",
+								"total"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get General Budget",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/budget/get/general",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"budget",
+								"get",
+								"general"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get PR Budget",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/budget/get/pr",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"budget",
+								"get",
+								"pr"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Materials",
+			"item": [
+				{
+					"name": "Add Material",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"materialType\":\"Cement\",\r\n    \"materialName\":\"Holcim Cement\",\r\n    \"uom\":\"kg\",\r\n    \"unitPrice\":2500\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/material/add",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"material",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Quantity to Material",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"materialId\":\"MAT14377\",\r\n    \"qty\":5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/material/qty/add",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"material",
+								"qty",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Quantity from Material",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"materialId\":\"MAT14377\",\r\n    \"qty\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/material/qty/remove",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"material",
+								"qty",
+								"remove"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Purchase Request",
+			"item": [
+				{
+					"name": "Material Requirement",
+					"item": [
+						{
+							"name": "Add Material Requirement",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"prid\":\"PR25935\",\r\n    \"materialId\":\"MAT49063\",\r\n    \"materialType\":\"Cement\",\r\n    \"qty\":10,\r\n    \"qtyUom\":\"kg\",\r\n    \"totalAmount\":5000   \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/mr/add",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"mr",
+										"add"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get Purchase Request",
+					"item": [
+						{
+							"name": "Get All Purchase Requests",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/pr/get/all",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"pr",
+										"get",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Purchase Requests with Authentication",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNmIxNzM4Mzk1YTYzY2Q1MThiYWYxNyIsInVzZXJuYW1lIjoibGluaXNoYTEiLCJ1c2VydHlwZSI6IlJFUVVFU1RPUiIsImlhdCI6MTY2Nzk2MjY5NCwiZXhwIjoxNjY4MDQ5MDk0fQ.CMQjc9hx8YGgjz8vw_BSo5850HO-22d02KaXiG_zMAM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/pr/get/auth/all",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"pr",
+										"get",
+										"auth",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Single Purchase Request by PR ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/pr/get/pr/PR25935",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"pr",
+										"get",
+										"pr",
+										"PR25935"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Single Purchase Request by PR ID With Authentication",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzI0MWRmYTYwMDM2Njk3OWQxMTU0ZSIsInVzZXJuYW1lIjoibGluaXNoYTEyIiwidXNlcnR5cGUiOiJSRVFVRVNUT1IiLCJpYXQiOjE2Njg0MzI0NjcsImV4cCI6MTY2ODUxODg2N30.eQE0cL3NcFTzqHuvktOX-R2pCEn4d53AryRsZDjD93E",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/pr/get/auth/pr/PR45663",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"pr",
+										"get",
+										"auth",
+										"pr",
+										"PR45663"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Create Purchase Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"prName\":\"Test Purchase Request\",\r\n    \"description\":\"aluth PR\",\r\n   \"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MWZiM2Q1ODg4OTU2OTY3Yzc0YzIyMCIsInVzZXJuYW1lIjoibGluaXNoYTEyIiwidXNlcnR5cGUiOiJSRVFVRVNUT1IiLCJpYXQiOjE2Nzk4NTMxODgsImV4cCI6MTY3OTkzOTU4OH0.vkNbotLpei0EO-6eKAx8MGxsM6bodqemBxXIVnKC-mY\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/pr/create",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"pr",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Approve Purchase Request",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjY0YzZjMmY2MmNhNDI1OGZkNzhkNiIsInVzZXJuYW1lIjoic2FwbmEiLCJ1c2VydHlwZSI6IkFQUFJPVkVSIiwiaWF0IjoxNjY4NDMzMTI4LCJleHAiOjE2Njg1MTk1Mjh9.17-z5GaVQqDam3lcDFoe9FAUvFmQmzjUgK-c-3TnHIU\",\r\n    \"prid\":\"PR12192\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/pr/status/approve",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"pr",
+								"status",
+								"approve"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Material Type",
+			"item": [
+				{
+					"name": "Add Material Type",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"materialType\":\"Cement\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/mt/new",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"mt",
+								"new"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Purchase Order",
+			"item": [
+				{
+					"name": "Purchase Orders by Status",
+					"item": [
+						{
+							"name": "Get all Rejected Purchase Orders",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/po/get/rejected",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"po",
+										"get",
+										"rejected"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Pending Purchase Orders",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/po/get/pending",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"po",
+										"get",
+										"pending"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Approved Purchase Orders",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/po/get/approved",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"po",
+										"get",
+										"approved"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Invoiced Purchase Orders",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/po/get/invoiced",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"po",
+										"get",
+										"invoiced"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Delivered Purchase Orders",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/po/get/delivered",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"po",
+										"get",
+										"delivered"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Purchase Order Status Change",
+					"item": [
+						{
+							"name": "Approve Purchase Order",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjY0ZTczMmY2MmNhNDI1OGZkNzhkOSIsInVzZXJuYW1lIjoiYW1hc2hpIiwidXNlcnR5cGUiOiJQVVJDSEFTRVIiLCJpYXQiOjE2Njg0MzMyMzEsImV4cCI6MTY2ODUxOTYzMX0.ObhrcPru-Nei5vGFBQQSHFFfEzZskJIeniSrTnQukXk\",\r\n    \"poid\":\"PO12883\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/po/approve",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"po",
+										"approve"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reject Purchase Order",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjY0ZTczMmY2MmNhNDI1OGZkNzhkOSIsInVzZXJuYW1lIjoiYW1hc2hpIiwidXNlcnR5cGUiOiJQVVJDSEFTRVIiLCJpYXQiOjE2Njg0MzMyMzEsImV4cCI6MTY2ODUxOTYzMX0.ObhrcPru-Nei5vGFBQQSHFFfEzZskJIeniSrTnQukXk\",\r\n    \"poid\":\"PO12883\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/po/reject",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"po",
+										"reject"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Invoice Purchase Orders",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjY0ZTczMmY2MmNhNDI1OGZkNzhkOSIsInVzZXJuYW1lIjoiYW1hc2hpIiwidXNlcnR5cGUiOiJQVVJDSEFTRVIiLCJpYXQiOjE2Njc2Njc0MjgsImV4cCI6MTY2Nzc1MzgyOH0.sfMqEFj1MAUO4kr9BZmZxEJLYdgN21wkBRRo21In2Ho\",\r\n    \"poid\":\"PO12883\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/po/invoice",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"po",
+										"invoice"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Create Purchase Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"supplierId\":\"SUP69\",\r\n    \"description\":\"PO Description\",\r\n    \"prid\":\"PR12192\",\r\n    \"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjY0ZTczMmY2MmNhNDI1OGZkNzhkOSIsInVzZXJuYW1lIjoiYW1hc2hpIiwidXNlcnR5cGUiOiJQVVJDSEFTRVIiLCJpYXQiOjE2Njg0MzMyMzEsImV4cCI6MTY2ODUxOTYzMX0.ObhrcPru-Nei5vGFBQQSHFFfEzZskJIeniSrTnQukXk\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/po/create",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"po",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Purchase Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/po/all",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"po",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Delivery",
+			"item": [
+				{
+					"name": "Status Change",
+					"item": [
+						{
+							"name": "En Route Delivery",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjY0ZWE5MmY2MmNhNDI1OGZkNzhkYyIsInVzZXJuYW1lIjoiYmVlbnUiLCJ1c2VydHlwZSI6IlJFQ0VJVkVSIiwiaWF0IjoxNjY4MTIxOTcwLCJleHAiOjE2NjgyMDgzNzB9.1ECPPlBddAqv4b9TJKFfOuyktDzOrEFbjNkpdp5B9es\",\r\n    \"deliveryId\":\"DEL27186\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/delivery/status/enroute",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"delivery",
+										"status",
+										"enroute"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Complete Delivery",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjY0ZWE5MmY2MmNhNDI1OGZkNzhkYyIsInVzZXJuYW1lIjoiYmVlbnUiLCJ1c2VydHlwZSI6IlJFQ0VJVkVSIiwiaWF0IjoxNjY4MTIxOTcwLCJleHAiOjE2NjgyMDgzNzB9.1ECPPlBddAqv4b9TJKFfOuyktDzOrEFbjNkpdp5B9es\",\r\n    \"deliveryId\":\"DEL22256\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/delivery/status/complete",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"delivery",
+										"status",
+										"complete"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cancel Delivery",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjY0ZWE5MmY2MmNhNDI1OGZkNzhkYyIsInVzZXJuYW1lIjoiYmVlbnUiLCJ1c2VydHlwZSI6IlJFQ0VJVkVSIiwiaWF0IjoxNjY4MTIxOTcwLCJleHAiOjE2NjgyMDgzNzB9.1ECPPlBddAqv4b9TJKFfOuyktDzOrEFbjNkpdp5B9es\",\r\n    \"deliveryId\":\"DEL22256\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/delivery/status/cancel",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"delivery",
+										"status",
+										"cancel"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get Delivery Order by Status",
+					"item": [
+						{
+							"name": "All started Delivery orders",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/delivery/get/all/started",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"delivery",
+										"get",
+										"all",
+										"started"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All EnRoute Delivery orders",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/delivery/get/all/enroute",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"delivery",
+										"get",
+										"all",
+										"enroute"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All Cancelled Delivery orders",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/delivery/get/all/cancelled",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"delivery",
+										"get",
+										"all",
+										"cancelled"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All Completed Delivery orders",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/delivery/get/all/completed",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"delivery",
+										"get",
+										"all",
+										"completed"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "New Delivery Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjY0ZWE5MmY2MmNhNDI1OGZkNzhkYyIsInVzZXJuYW1lIjoiYmVlbnUiLCJ1c2VydHlwZSI6IlJFQ0VJVkVSIiwiaWF0IjoxNjY4MTIxOTcwLCJleHAiOjE2NjgyMDgzNzB9.1ECPPlBddAqv4b9TJKFfOuyktDzOrEFbjNkpdp5B9es\",\r\n    \"poid\":\"PO12883\",\r\n    \"supplierId\":\"SUPPLIER01\",\r\n   \"paymentMethod\":\"Cheque\",\r\n   \"paymentStatus\":\"PAID\",\r\n   \"contactNo\":\"0767601447\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/delivery/create",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"delivery",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One Delivery Order",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/delivery/get/delivery/DEL39888",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"delivery",
+								"get",
+								"delivery",
+								"DEL39888"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all delivery orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/delivery/get/all/",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"delivery",
+								"get",
+								"all",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
