@@ -12,7 +12,6 @@ exports.createSupplier = (req, res, next) => {
   })
     .exec()
     .then((supplier) => {
-      console.log(supplier);
       if (supplier) {
         res.status(409).json({
           message: "Supplier already exists",
@@ -202,7 +201,6 @@ exports.supplierLogin = (req, res) => {
         }
       })
       .catch((err) => {
-        console.log(err);
         res.status(500).json({
           error: err,
           code: "UNKNOWN_ERROR",
