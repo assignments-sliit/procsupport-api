@@ -14,9 +14,11 @@ app.use(express.json());
 
 //routes
 const userRoutes = require("./components/auth/routes/userRoutes");
+const supplierRoutes = require("./components/supplier/routes/supplierRoutes")
 
 //endpoints
 app.use("/api/users", userRoutes);
+app.use("/api/suppliers", supplierRoutes)
 
 //cors
 app.all((req, res, next) => {
