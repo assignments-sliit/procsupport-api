@@ -224,30 +224,52 @@ exports.checkUserType = (req, res) => {
 };
 
 exports.getAllUsersForAdmin = (req, res) => {
-  Users.find({
-    usertype: { $ne: "ADMIN" },
-  })
-    .exec()
-    .then((user) => {
-      if (user) {
-        res.status(200).json({
-          message: "Users found",
-          users: user,
-          code: "USER_FOUND",
-        });
-      }
+  const token = req.body.token;
+  let userType = "";
 
-      if (!user) {
-        res.status(404).json({
-          message: "User not found",
-          code: "USER_NOT_FOUND",
-        });
+  if (token) {
+    const json = JSON.parse(
+      Buffer.from(token.split(".")[1], "base64").toString()
+    );
+
+    Object.entries(json).map((entry) => {
+      if (entry[0] == "usertype") {
+        userType = entry[1];
       }
-    })
-    .catch((err) => {
-      res.status(500).json({
-        error: err,
-        code: "UNKNOWN_ERROR",
-      });
     });
+  }
+
+  if (userType == "ADMIN") {
+    Users.find({
+      usertype: { $ne: "ADMIN" },
+    })
+      .exec()
+      .then((user) => {
+        if (user) {
+          res.status(200).json({
+            message: "Users found",
+            users: user,
+            code: "USER_FOUND",
+          });
+        }
+
+        if (!user) {
+          res.status(404).json({
+            message: "User not found",
+            code: "USER_NOT_FOUND",
+          });
+        }
+      })
+      .catch((err) => {
+        res.status(500).json({
+          error: err,
+          code: "UNKNOWN_ERROR",
+        });
+      });
+  } else {
+    res.status(401).json({
+      message: "Unauthorized access. Current User is not an Admin",
+      code: "UNAUTHORIZED_USER_NOT_ADMIN",
+    });
+  }
 };
