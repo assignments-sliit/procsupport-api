@@ -13,4 +13,11 @@ routes.post(
 
 routes.get("/get/all", prController.fetchAllPrNoAuth);
 
+routes.put(
+  "/update/prid/:prid",
+  prController.checkUserAndAccess,
+  prController.currentUserHasAccessToThePr,
+  prController.updateOnePrByPrId
+);
+
 module.exports = routes;

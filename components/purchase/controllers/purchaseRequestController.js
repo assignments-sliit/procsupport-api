@@ -63,6 +63,21 @@ exports.checkUserAndAccess = (req, res, next) => {
   }
 };
 
+exports.currentUserHasAccessToThePr = (req, res, next) => {
+  PurchaseRequest.findOne({ prid: req.params.prid || req.body.prid })
+    .exec()
+    .then((foundPr) => {
+      if (foundPr.createdBy == req.body.currentUserId) {
+        next();
+      } else {
+        res.status(409).json({
+          error: "You don't have access to the Purchase Request",
+          code: "NO_ACCESS_TO_PR",
+        });
+      }
+    });
+};
+
 exports.createPurchaseRequest = (req, res) => {
   const { prid, prName, description, currentUserId } = req.body;
 
@@ -108,6 +123,29 @@ exports.fetchAllPrNoAuth = (req, res, next) => {
       }
     })
     .catch((error) => {
+      res.status(500).json({
+        error: error,
+        code: "UNKNOWN_SERVER_ERROR",
+      });
+    });
+};
+
+exports.updateOnePrByPrId = (req, res, next) => {
+  const update = req.body;
+  PurchaseRequest.findOneAndUpdate(
+    {
+      prid: req.params.prid,
+    },
+    update,
+    { returnOriginal: false }
+  )
+    .then((updatedPr) => {
+      res.status(200).json({
+        updated_record: updatedPr,
+        code: "PR_MODIFIED",
+      });
+    })
+    .catch((err) => {
       res.status(500).json({
         error: error,
         code: "UNKNOWN_SERVER_ERROR",
