@@ -149,36 +149,39 @@ exports.checkIfUserAdmin = (req, res, next) => {
 };
 
 exports.supplierLogin = (req, res) => {
-    const { supplierUsername, supplierUserPassword } = req.body;
-  
-    Supplier.findOne({
-        supplierUsername: supplierUsername,
-    })
-      .exec()
-      .then((foundUser) => {
-        if (foundUser) {
-          bcrypt.compare(supplierUserPassword, foundUser.supplierUserPassword, (err, result) => {
+  const { supplierUsername, supplierUserPassword } = req.body;
+
+  Supplier.findOne({
+    supplierUsername: supplierUsername,
+  })
+    .exec()
+    .then((foundUser) => {
+      if (foundUser) {
+        bcrypt.compare(
+          supplierUserPassword,
+          foundUser.supplierUserPassword,
+          (err, result) => {
             if (err) {
               return res.status(401).json({
                 error: "Incorrect Password",
                 code: "INCORRECT_PASSWORD",
               });
             }
-  
+
             if (result) {
               //correct password
               const token = jwt.sign(
                 {
                   id: foundUser._id,
                   username: foundUser.supplierUsername,
-                  usertype: "SUPPLIER"
+                  usertype: "SUPPLIER",
                 },
                 JWT_KEY,
                 {
                   expiresIn: "24h",
                 }
               );
-  
+
               return res.status(200).json({
                 message: "Authorization Success",
                 data: {
@@ -192,18 +195,72 @@ exports.supplierLogin = (req, res) => {
               error: "Authorization Failed!",
               code: "AUTH_FAILED",
             });
-          });
-        } else {
-          res.status(404).json({
-            error: "Supplier not found!",
-            code: "SUPPLIER_NOT_FOUND",
-          });
-        }
-      })
-      .catch((err) => {
-        res.status(500).json({
-          error: err,
-          code: "UNKNOWN_ERROR",
+          }
+        );
+      } else {
+        res.status(404).json({
+          error: "Supplier not found!",
+          code: "SUPPLIER_NOT_FOUND",
         });
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+        code: "UNKNOWN_ERROR",
       });
-  };
+    });
+};
+
+exports.checkIfSupplier = (req, res, next) => {
+  const token = req.body.token;
+  let userType = "";
+
+  if (token) {
+    const json = JSON.parse(
+      Buffer.from(token.split(".")[1], "base64").toString()
+    );
+
+    Object.entries(json).map((entry) => {
+      if (entry[0] == "usertype") {
+        userType = entry[1];
+      }
+    });
+  }
+
+  if (userType == "SUPPLIER") {
+    req.usertype = userType;
+    next();
+  } else {
+    res.status(401).json({
+      message: "Unauthorized access. Current User is not a Supplier",
+      code: "UNAUTHORIZED_USER_NOT_SUPPLIER",
+    });
+  }
+};
+
+exports.getSupplierUid = (req, res, next) => {
+  const token = req.body.token;
+  let _id = "";
+
+  if (token) {
+    const json = JSON.parse(
+      Buffer.from(token.split(".")[1], "base64").toString()
+    );
+
+    Object.entries(json).map((entry) => {
+      if (entry[0] == "id") {
+        _id = entry[1];
+      }
+    });
+  }
+
+  if (_id) {
+    req.body.supplierUid = _id;
+  } else {
+    res.status(401).json({
+      message: "User token corrupted",
+      code: "SUPPLIER_TOKEN_CORRUPTED",
+    });
+  }
+};

@@ -4,7 +4,7 @@ const express = require("express");
 
 const app = express();
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 const { getDbConnection } = require("./db/DBConnection");
 
 const cors = require("cors");
@@ -14,11 +14,13 @@ app.use(express.json());
 
 //routes
 const userRoutes = require("./components/auth/routes/userRoutes");
-const supplierRoutes = require("./components/supplier/routes/supplierRoutes")
+const supplierRoutes = require("./components/supplier/routes/supplierRoutes");
+const prRoutes = require("./components/purchase/routes/prRoutes");
 
 //endpoints
 app.use("/api/users", userRoutes);
-app.use("/api/suppliers", supplierRoutes)
+app.use("/api/suppliers", supplierRoutes);
+app.use("/api/pr", prRoutes);
 
 //cors
 app.all((req, res, next) => {
