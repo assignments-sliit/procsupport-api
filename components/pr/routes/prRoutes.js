@@ -23,4 +23,6 @@ routes.get("/get/pr/:prid",prController.fetchPrByPrId)
 
 routes.get("/get/auth/pr/:prid",prController.fetchPrByPrIdWithAuth)
 
+routes.get("/get/approved", prController.fetchApprovedPr)
+
 module.exports = routes;

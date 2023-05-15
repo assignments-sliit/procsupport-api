@@ -383,3 +383,52 @@ exports.fetchPrByPrIdWithAuth = (req, res, next) => {
       });
   }
 };
+
+exports.fetchApprovedPr = (req,res,next) => {
+
+  PurchaseRequest.find({
+    status : "APPROVED"
+  }).exec().then((approvedPr)=>{
+    if(approvedPr.length > 0) {
+      res.status(200).json({
+        data: this.approvedPr,
+        code: "APPROVED_PR_FOUND"
+      })
+    }else{
+      res.status(404).json({
+        error: "No Approved Purchase Request Found",
+        code: "NO_APPROVED_PR"
+      })
+    }
+  }).catch((err)=>{
+    res.status(500).json({
+      error:err,
+      code: "UNKNOWN_SERVER_ERROR"
+    })
+  })
+  
+}
+
+exports.fetchDeclinedPr = (req,res,next) => {
+  PurchaseRequest.find({
+    status : "DECLINED"
+  }).exec().then((declinedPr)=>{
+    if(declinedPr.length > 0) {
+      res.status(200).json({
+        data: this.declinedPr,
+        code: "DECLINED_PR_FOUND"
+      })
+    }else{
+      res.status(404).json({
+        error: "No Declined Purchase Request Found",
+        code: "NO_DECLINED_PR"
+      })
+    }
+  }).catch((err)=>{
+    res.status(500).json({
+      error:err,
+      code: "UNKNOWN_SERVER_ERROR"
+    })
+  })
+  
+}
