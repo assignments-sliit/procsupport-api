@@ -14,13 +14,19 @@ app.use(express.json());
 
 //routes
 const userRoutes = require("./components/auth/routes/userRoutes");
+const prRoutes = require("./components/pr/routes/prRoutes");
+const mrRoutes = require("./components/pr/routes/mrRoutes");
+const mtRoutes = require("./components/materials/routes/materialTypeRoutes");
+const materialRoutes = require("./components/materials/routes/materialRoutes");
 const supplierRoutes = require("./components/supplier/routes/supplierRoutes");
-const prRoutes = require("./components/purchase/routes/prRoutes");
 
 //endpoints
 app.use("/api/users", userRoutes);
-app.use("/api/suppliers", supplierRoutes);
 app.use("/api/pr", prRoutes);
+app.use("/api/mr", mrRoutes);
+app.use("/api/mt", mtRoutes);
+app.use("/api/material", materialRoutes);
+app.use("/api/suppliers", supplierRoutes);
 
 //cors
 app.all((req, res, next) => {
