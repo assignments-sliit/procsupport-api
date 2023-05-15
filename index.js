@@ -4,7 +4,7 @@ const express = require("express");
 
 const app = express();
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 const { getDbConnection } = require("./db/DBConnection");
 
 const cors = require("cors");
@@ -18,6 +18,7 @@ const prRoutes = require("./components/pr/routes/prRoutes");
 const mrRoutes = require("./components/pr/routes/mrRoutes");
 const mtRoutes = require("./components/materials/routes/materialTypeRoutes");
 const materialRoutes = require("./components/materials/routes/materialRoutes");
+const supplierRoutes = require("./components/supplier/routes/supplierRoutes");
 
 //endpoints
 app.use("/api/users", userRoutes);
@@ -25,6 +26,7 @@ app.use("/api/pr", prRoutes);
 app.use("/api/mr", mrRoutes);
 app.use("/api/mt", mtRoutes);
 app.use("/api/material", materialRoutes);
+app.use("/api/suppliers", supplierRoutes);
 
 //cors
 app.all((req, res, next) => {
