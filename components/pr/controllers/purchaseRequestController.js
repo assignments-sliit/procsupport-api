@@ -25,10 +25,18 @@ exports.checkPrExists = (req, res, next) => {
 };
 
 exports.checkUserAndAccess = (req, res, next) => {
-  const token = req.body.token;
+  const header = req.headers["authorization"];
+
+  if (typeof header !== "undefined") {
+    const bearer = header.split(" ");
+
+    const token = bearer[1];
+    
+    req.token = token;
+  }
 
   let usertype = "";
-
+  const token = req.token;
   if (token) {
     const json = JSON.parse(
       Buffer.from(token.split(".")[1], "base64").toString()
@@ -55,7 +63,7 @@ exports.checkUserAndAccess = (req, res, next) => {
   }
   //cannot find token
   else {
-    res.status(409).json({
+    res.status(401).json({
       error: "Cannot find auth token",
       code: "AUTH_TOKEN_NOT_FOUND",
     });
@@ -63,15 +71,9 @@ exports.checkUserAndAccess = (req, res, next) => {
 };
 
 exports.createPurchaseRequest = (req, res) => {
-  const { prid, prName, description, createdBy } = req.body;
 
-  const newPr = new PurchaseRequest({
-    _id: new mongoose.Types.ObjectId(),
-    prid: prid,
-    prName: prName,
-    description: description,
-    createdBy: createdBy,
-  });
+  req.body._id = new mongoose.Types.ObjectId();
+  const newPr = new PurchaseRequest(req.body);
 
   newPr
     .save()

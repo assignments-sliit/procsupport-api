@@ -19,6 +19,8 @@ const mrRoutes = require("./components/pr/routes/mrRoutes");
 const mtRoutes = require("./components/materials/routes/materialTypeRoutes");
 const materialRoutes = require("./components/materials/routes/materialRoutes");
 const supplierRoutes = require("./components/supplier/routes/supplierRoutes");
+const poRoutes = require("./components/po/routes/poRoutes")
+const budgetRoutes = require("./components/budget/routes/budgetRoute")
 
 //endpoints
 app.use("/api/users", userRoutes);
@@ -27,6 +29,9 @@ app.use("/api/mr", mrRoutes);
 app.use("/api/mt", mtRoutes);
 app.use("/api/material", materialRoutes);
 app.use("/api/suppliers", supplierRoutes);
+app.use("/api/po",poRoutes)
+app.use("/api/budget",budgetRoutes)
+
 
 //cors
 app.all((req, res, next) => {
