@@ -192,20 +192,18 @@ exports.checkBudgetBeforePoInvoice = (req, res, next) => {
         allBudgetObjects.map((singleObject) => {
           budget = budget + parseInt(singleObject.amount);
         });
-        
+
         PurchaseOrder.findOne({
           poid: req.body.poid,
         }).then((po) => {
           if (po) {
-            if ((budget == 0)) {
+            if (budget == 0) {
               res.status(200).json({
                 error: "No Budget to Invoice this Purchase Order",
                 code: "NO_BUDGET_FOR_PO",
               });
             }
             if (po.amount > budget) {
-                console.log("budget amount pr: " + budget)
-                console.log(" amount po: " + po.amount)
               res.status(200).json({
                 error: "Insufficient Budget to Invoice this Purchase Order",
                 code: "INSUFFICIENT_BUDGET_FOR_PO",
@@ -225,7 +223,6 @@ exports.checkBudgetBeforePoInvoice = (req, res, next) => {
 };
 
 exports.invoicePo = (req, res, next) => {
-  console.log("invoice method");
   PurchaseOrder.findOneAndUpdate(
     {
       poid: req.body.poid,
@@ -239,7 +236,6 @@ exports.invoicePo = (req, res, next) => {
       req.body.amount = po.amount;
       next();
     });
-
 };
 
 exports.deductBudgetAfterInvoicePo = (req, res, next) => {
@@ -257,9 +253,9 @@ exports.deductBudgetAfterInvoicePo = (req, res, next) => {
         }
 
         Budget.findOneAndUpdate(
-         {
-            _id: allBudgetObjects[0]._id
-         },
+          {
+            _id: allBudgetObjects[0]._id,
+          },
           {
             amount: budget,
           }
@@ -386,3 +382,91 @@ exports.fetchAllDeliveredPos = (req, res, next) => {
       }
     });
 };
+
+exports.updatePo = (req, res, next) => {
+  PurchaseOrder.findOne({
+    poid: req.params.poid,
+  })
+    .exec()
+    .then((foundPo) => {
+      if (foundPo) {
+        req.body.updatedOn = Date.now()
+        PurchaseOrder.updateOne(
+          {
+            _id: foundPo._id,
+          },
+          req.body
+        ).then((updatedPo) => {
+          PurchaseOrder.findOne({
+            _id: foundPo._id,
+          })
+            .exec()
+            .then((updatedPoBornAgain) => {
+              res.status(200).json({
+                updatedPurchaseOrder: updatedPoBornAgain,
+                code: "PURCHASE_ORDER_UPDATED",
+              });
+            });
+        });
+      } else {
+        res.status(404).json({
+          error: "No Purchase Order Found",
+          code: "NO_PURCHASE_ORDER_FOUND",
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+        code: "UNKNOWN_SERVER_ERROR",
+      });
+    });
+};
+
+exports.fetchOnePo = (req, res, next) => {
+  PurchaseOrder.findOne({
+    poid: req.params.poid,
+  })
+    .exec()
+    .then((foundPo) => {
+      if (foundPo) {
+        res.status(200).json({
+          po: foundPo,
+          code: "PURCHASE_ORDER_FOUND",
+        });
+      } else {
+        res.status(404).json({
+          error: "No Purchase Order Found",
+          code: "NO_PURCHASE_ORDER_FOUND",
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+        code: "UNKNOWN_SERVER_ERROR",
+      });
+    });
+};
+
+exports.deleteOnePo = (req,res,next)=>{
+  PurchaseOrder.findOne({
+    poid:req.params.poid
+  }).exec().then((foundPo)=>{
+    if(foundPo.status == "APPROVED" || foundPo.status == "DELIVERED" || foundPo.status == "INVOICED"){
+        res.status(403).json({
+            error:"Cannot delete Purchase Order which is Approved, Delivered or Invoiced",
+            code:"CANNOT_DELETE_PO"
+        })
+    }else{
+        PurchaseOrder.deleteOne({
+            poid:req.params.poid
+        }).exec().then(()=>{
+            res.status(204).json({
+                message:"PO Deleted",
+                code:"PO_DELETED"
+            })
+        })
+    }
+  })
+}

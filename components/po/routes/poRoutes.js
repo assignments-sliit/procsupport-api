@@ -39,5 +39,9 @@ routes.put(
  poController.deductBudgetAfterInvoicePo
 );
 
+routes.get("/get/one/:poid", poController.fetchOnePo)
 
+routes.put("/update/:poid",poController.checkUserAndAccess,poController.updatePo)
+
+routes.delete("/delete/:poid", poController.checkUserAndAccess, poController.deleteOnePo)
 module.exports = routes;

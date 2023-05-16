@@ -10,7 +10,7 @@ const PurchaseOrderSchema = new Schema({
     },
     supplierId:{
         type:String,
-        required:true,
+        required:true
     },
     description:{
         type:String,
@@ -19,11 +19,13 @@ const PurchaseOrderSchema = new Schema({
     amount:{
         type:Number,
         required:true,
+        immutable:true
     },
     createdOn:{
         type:Date,
         required:true,
-        default:Date.now()
+        default:Date.now(),
+        immutable:true
     },
     updatedOn:{
         type:Date,
@@ -39,7 +41,8 @@ const PurchaseOrderSchema = new Schema({
     createdBy:{
         type:mongoose.Types.ObjectId,
         ref:'Users',
-        required:true
+        required:true,
+        immutable:true
     },
     prid:{
         type:String,
