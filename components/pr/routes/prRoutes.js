@@ -2,7 +2,6 @@ const express = require("express");
 const routes = express.Router();
 
 const prController = require("../controllers/purchaseRequestController");
-
 //create purchase request
 routes.post(
   "/create",
