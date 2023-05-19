@@ -122,28 +122,48 @@ exports.getSingleSupplier = (req, res, next) => {
 };
 
 exports.checkIfUserAdmin = (req, res, next) => {
-  const token = req.body.token;
-  let userType = "";
 
+  const header = req.headers["authorization"];
+
+  if (typeof header !== "undefined") {
+    const bearer = header.split(" ");
+
+    const token = bearer[1];
+
+    req.token = token;
+  }
+
+  let usertype = "";
+  const token = req.token;
   if (token) {
     const json = JSON.parse(
       Buffer.from(token.split(".")[1], "base64").toString()
     );
 
     Object.entries(json).map((entry) => {
+      if (entry[0] == "id") {
+        req.body.createdBy = entry[1].toString();
+      }
+
       if (entry[0] == "usertype") {
-        userType = entry[1];
+        usertype = entry[1].toString();
       }
     });
-  }
 
-  if (userType == "ADMIN") {
-    req.usertype = userType;
-    next();
-  } else {
-    res.status(401).json({
-      message: "Unauthorized access. Current User is not an Admin",
-      code: "UNAUTHORIZED_USER_NOT_ADMIN",
+    if (usertype && usertype == "ADMIN") {
+      next();
+    } else {
+      res.status(409).json({
+        message: "Unauthorized access. Current User is not an Admin",
+        code: "UNAUTHORIZED_USER_NOT_ADMIN",
+      });
+    }
+  }
+  //cannot find token
+  else {
+    res.status(409).json({
+      error: "Cannot find auth token",
+      code: "AUTH_TOKEN_NOT_FOUND",
     });
   }
 };
@@ -263,4 +283,43 @@ exports.getSupplierUid = (req, res, next) => {
       code: "SUPPLIER_TOKEN_CORRUPTED",
     });
   }
+};
+
+exports.updateSupplierDetails = (req, res, next) => {
+  Supplier.findOne({
+    supplierUsername: req.params.supplierUsername,
+  })
+    .exec()
+    .then((supplier) => {
+      if (supplier) {
+        Supplier.updateOne(
+          {
+            _id: supplier._id,
+          },
+          req.body
+        ).then((temp) => {
+          Supplier.findOne({
+            _id: supplier._id,
+          })
+            .exec()
+            .then((updatedSupplier) => {
+              res.status(200).json({
+                updated: updatedSupplier,
+                code: "SUPPLIER_UPDATED",
+              });
+            });
+        });
+      } else {
+        res.status(404).json({
+          error: "No Supplier Found",
+          code: "NO_SUPPLIER_FOUND",
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+        code: "UNKNOWN_SERVER_ERROR",
+      });
+    });
 };
