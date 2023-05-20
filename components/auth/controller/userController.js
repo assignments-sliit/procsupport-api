@@ -224,12 +224,19 @@ exports.checkUserType = (req, res) => {
 };
 
 exports.getAllUsersForAdmin = (req, res) => {
-  const token = req.body.token;
-  let userType = "";
+  const header = req.headers["authorization"];
 
-  if (token) {
+  if (typeof header !== "undefined") {
+    const bearer = header.split(" ");
+
+    const token = bearer[1];
+    console.log(token);
+    req.token = token;
+  }
+
+  if (req.token) {
     const json = JSON.parse(
-      Buffer.from(token.split(".")[1], "base64").toString()
+      Buffer.from(req.token.split(".")[1], "base64").toString()
     );
 
     Object.entries(json).map((entry) => {
