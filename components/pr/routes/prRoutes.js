@@ -10,7 +10,9 @@ routes.post(
   prController.createPurchaseRequest
 );
 
-routes.put("/status/approve",prController.approvePr)
+routes.put("/auth/status/approve",
+prController.checkIfApprover,
+prController.approvePr)
 
 routes.put("/status/decline",prController.declinePr)
 

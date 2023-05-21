@@ -31,7 +31,7 @@ exports.checkUserAndAccess = (req, res, next) => {
     const bearer = header.split(" ");
 
     const token = bearer[1];
-    
+
     req.token = token;
   }
 
@@ -56,8 +56,54 @@ exports.checkUserAndAccess = (req, res, next) => {
       next();
     } else {
       res.status(409).json({
-        error: "Access Denied",
-        code: "ACCESS_DENIED",
+        error: "Access Denied. User not Requestor",
+        code: "ACCESS_DENIED_USER_NOT_REQUESTOR",
+      });
+    }
+  }
+  //cannot find token
+  else {
+    res.status(401).json({
+      error: "Cannot find auth token",
+      code: "AUTH_TOKEN_NOT_FOUND",
+    });
+  }
+};
+
+exports.checkIfApprover = (req, res, next) => {
+  const header = req.headers["authorization"];
+
+  if (typeof header !== "undefined") {
+    const bearer = header.split(" ");
+
+    const token = bearer[1];
+
+    req.token = token;
+  }
+
+  let usertype = "";
+  const token = req.token;
+  if (token) {
+    const json = JSON.parse(
+      Buffer.from(token.split(".")[1], "base64").toString()
+    );
+
+    Object.entries(json).map((entry) => {
+      if (entry[0] == "id") {
+        req.body.createdBy = entry[1].toString();
+      }
+
+      if (entry[0] == "usertype") {
+        usertype = entry[1].toString();
+      }
+    });
+
+    if (usertype && usertype == "APPROVER") {
+      next();
+    } else {
+      res.status(409).json({
+        error: "Access Denied. User is not Approver",
+        code: "ACCESS_DENIED_NOT_APPROVER",
       });
     }
   }
@@ -71,7 +117,6 @@ exports.checkUserAndAccess = (req, res, next) => {
 };
 
 exports.createPurchaseRequest = (req, res) => {
-
   req.body._id = new mongoose.Types.ObjectId();
   const newPr = new PurchaseRequest(req.body);
 
@@ -149,22 +194,15 @@ exports.addMaterialRequirement = (req, res, next) => {
 };
 
 exports.approvePr = (req, res, next) => {
-  const token = req.body.token;
-
-  let usertype = "";
-
-  if (token) {
-    const json = JSON.parse(
-      Buffer.from(token.split(".")[1], "base64").toString()
-    );
-
-    Object.entries(json).map((entry) => {
-      if (entry[0] == "usertype") {
-        usertype = entry[1].toString();
-      }
-    });
-
-    if (usertype && usertype == "APPROVER") {
+  PurchaseRequest.findOne({
+    prid:req.body.prid
+  }).exec().then((pr)=>{
+    if(pr.status == "APPROVED"){
+      res.status(409).json({
+        error: "The Purchase Request is already Approved",
+        code: "PR_ALREADY_APPROVED"
+      })
+    }else{
       PurchaseRequest.findOneAndUpdate(
         {
           prid: req.body.prid,
@@ -183,20 +221,9 @@ exports.approvePr = (req, res, next) => {
             });
           });
         });
-    } else {
-      res.status(409).json({
-        error: "Access Denied",
-        code: "ACCESS_DENIED",
-      });
     }
-  }
-  //cannot find token
-  else {
-    res.status(409).json({
-      error: "Cannot find auth token",
-      code: "AUTH_TOKEN_NOT_FOUND",
-    });
-  }
+  })
+
 };
 
 exports.declinePr = (req, res, next) => {
@@ -386,51 +413,54 @@ exports.fetchPrByPrIdWithAuth = (req, res, next) => {
   }
 };
 
-exports.fetchApprovedPr = (req,res,next) => {
-
+exports.fetchApprovedPr = (req, res, next) => {
   PurchaseRequest.find({
-    status : "APPROVED"
-  }).exec().then((approvedPr)=>{
-    if(approvedPr.length > 0) {
-      res.status(200).json({
-        data: this.approvedPr,
-        code: "APPROVED_PR_FOUND"
-      })
-    }else{
-      res.status(404).json({
-        error: "No Approved Purchase Request Found",
-        code: "NO_APPROVED_PR"
-      })
-    }
-  }).catch((err)=>{
-    res.status(500).json({
-      error:err,
-      code: "UNKNOWN_SERVER_ERROR"
-    })
+    status: "APPROVED",
   })
-  
-}
+    .exec()
+    .then((approvedPr) => {
+      if (approvedPr.length > 0) {
+        res.status(200).json({
+          data: this.approvedPr,
+          code: "APPROVED_PR_FOUND",
+        });
+      } else {
+        res.status(404).json({
+          error: "No Approved Purchase Request Found",
+          code: "NO_APPROVED_PR",
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+        code: "UNKNOWN_SERVER_ERROR",
+      });
+    });
+};
 
-exports.fetchDeclinedPr = (req,res,next) => {
+exports.fetchDeclinedPr = (req, res, next) => {
   PurchaseRequest.find({
-    status : "DECLINED"
-  }).exec().then((declinedPr)=>{
-    if(declinedPr.length > 0) {
-      res.status(200).json({
-        data: this.declinedPr,
-        code: "DECLINED_PR_FOUND"
-      })
-    }else{
-      res.status(404).json({
-        error: "No Declined Purchase Request Found",
-        code: "NO_DECLINED_PR"
-      })
-    }
-  }).catch((err)=>{
-    res.status(500).json({
-      error:err,
-      code: "UNKNOWN_SERVER_ERROR"
-    })
+    status: "DECLINED",
   })
-  
-}
+    .exec()
+    .then((declinedPr) => {
+      if (declinedPr.length > 0) {
+        res.status(200).json({
+          data: this.declinedPr,
+          code: "DECLINED_PR_FOUND",
+        });
+      } else {
+        res.status(404).json({
+          error: "No Declined Purchase Request Found",
+          code: "NO_DECLINED_PR",
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+        code: "UNKNOWN_SERVER_ERROR",
+      });
+    });
+};
