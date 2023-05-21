@@ -40,6 +40,10 @@ routes.get("/get/pr/:prid", prController.fetchPrByPrId);
 
 routes.get("/get/auth/pr/:prid", prController.fetchPrByPrIdWithAuth);
 
-routes.get("/get/approved", prController.fetchApprovedPr);
+routes.get("/get/approved/all", prController.fetchApprovedPr);
+
+routes.get("/get/declined/all", prController.fetchDeclinedPr);
+
+routes.get("/get/pending/all", prController.fetchPendingPr);
 
 module.exports = routes;

@@ -5,7 +5,6 @@ const Material = require("../../materials/models/MaterialSchema");
 const MaterialType = require("../../materials/models/MaterialTypeSchema");
 const MaterialRequirement = require("../models/MaterialRequirement");
 
-
 //Check Auth
 exports.checkUserAndAccess = (req, res, next) => {
   const header = req.headers["authorization"];
@@ -195,7 +194,6 @@ exports.checkPrExists = (req, res, next) => {
 //       }
 //     });
 // };
-
 
 //Status Change
 exports.approvePr = (req, res, next) => {
@@ -460,7 +458,7 @@ exports.fetchApprovedPr = (req, res, next) => {
     .then((approvedPr) => {
       if (approvedPr.length > 0) {
         res.status(200).json({
-          data: this.approvedPr,
+          data: approvedPr,
           code: "APPROVED_PR_FOUND",
         });
       } else {
@@ -486,7 +484,7 @@ exports.fetchDeclinedPr = (req, res, next) => {
     .then((declinedPr) => {
       if (declinedPr.length > 0) {
         res.status(200).json({
-          data: this.declinedPr,
+          data: declinedPr,
           code: "DECLINED_PR_FOUND",
         });
       } else {
@@ -504,3 +502,28 @@ exports.fetchDeclinedPr = (req, res, next) => {
     });
 };
 
+exports.fetchPendingPr = (req, res, next) => {
+  PurchaseRequest.find({
+    status: "PENDING",
+  })
+    .exec()
+    .then((pendingPr) => {
+      if (pendingPr.length > 0) {
+        res.status(200).json({
+          data: pendingPr,
+          code: "PENDING_PR_FOUND",
+        });
+      } else {
+        res.status(404).json({
+          error: "No Pending Purchase Request found",
+          code: "NO_PENDING_PR",
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+        code: "UNKNOWN_SERVER_ERROR",
+      });
+    });
+};
