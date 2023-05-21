@@ -1,34 +1,38 @@
 const express = require("express");
 const routes = express.Router();
 
-const suppierController = require("../controller/supplierController");
+const supplierController = require("../controller/supplierController");
 
 //create supplier
 routes.post(
   "/create",
-  suppierController.checkIfUserAdmin,
-  suppierController.createSupplier
+  supplierController.checkIfUserAdmin,
+  supplierController.createSupplier
 );
 
 //delete single user
 routes.delete(
   "/delete",
-  suppierController.checkIfUserAdmin,
-  suppierController.deleteSupplier
+  supplierController.checkIfUserAdmin,
+  supplierController.deleteSupplier
 );
 
 //fetch all suppliers
 routes.get(
   "/get/all",
-  suppierController.checkIfUserAdmin,
-  suppierController.getAllSuppliers
+  supplierController.checkIfUserAdmin,
+  supplierController.getAllSuppliers
 );
 
 routes.get(
   "/get/one/:supplierUsername",
-  suppierController.checkIfUserAdmin,
-  suppierController.getSingleSupplier
+  supplierController.checkIfUserAdmin,
+  supplierController.getSingleSupplier
 );
 
-routes.post("/login",suppierController.supplierLogin)
+routes.post("/login",supplierController.supplierLogin)
+
+routes.put("/auth/update/:supplierUsername", 
+supplierController.checkIfUserAdmin,
+supplierController.updateSupplierDetails)
 module.exports = routes;
