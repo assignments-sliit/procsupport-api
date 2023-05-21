@@ -1,13 +1,14 @@
 const mongoose = require("mongoose");
 
 const Material = require("../models/MaterialSchema");
+const MaterialSchema = require("../models/MaterialSchema");
+const MaterialTypeSchema = require("../models/MaterialTypeSchema");
 
 exports.addMaterial = (req, res) => {
   const id = new mongoose.Types.ObjectId();
   req.body._id = id;
-  const materialId = "MAT" + Math.floor(Math.random() * 50000);
-  req.body.materialId = materialId;
-
+  req.body.materialId = "MAT" + Math.floor(Math.random() * 50000);
+ 
   const material = new Material(req.body);
 
   material
@@ -27,7 +28,7 @@ exports.addMaterial = (req, res) => {
     });
 };
 
-exports.checkMaterialExists = (req, res, next) => {
+exports.getMaterialQty = (req, res, next) => {
   const materialId = req.body.materialId;
   Material.findOne({
     materialId: materialId,
@@ -46,6 +47,23 @@ exports.checkMaterialExists = (req, res, next) => {
       }
     });
 };
+
+exports.getMaterialTypeDetails = (req,res,next) =>{
+  MaterialTypeSchema.findOne({
+    materialTypeId: req.body.materialTypeId
+  }).exec().then((mt)=>{
+    if(mt){
+      req.body.materialType = mt.materialType
+      req.body.uom = mt.uom
+      next()
+    }else{
+      res.status(404).json({
+        error: "The Material Type does not exist",
+        code: "MT_NOT_EXIST",
+      });
+    }
+  })
+}
 
 exports.addQtyToMaterial = (req, res) => {
   Material.updateOne(
@@ -80,3 +98,22 @@ exports.removeQtyToMaterial = (req, res) => {
       });
     });
 };
+
+exports.checkMaterialExists = (req, res, next) => {
+  const materialId = req.body.materialId || req.params.materialId;
+  Material.findOne({
+    materialId: materialId,
+  })
+    .exec()
+    .then((foundMat) => {
+      if (foundMat) {
+        res.status(409).json({
+          error: "The Material Exists",
+          code: "MT_EXISTS",
+        });
+      } else {
+        next();
+      }
+    });
+};
+

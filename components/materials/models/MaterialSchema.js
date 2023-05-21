@@ -9,6 +9,10 @@ const MaterialSchema = new Schema({
     required: true,
     unique:true
   },
+  materialTypeId: {
+    type: String,
+    required: true,
+  },
   materialType: {
     type: String,
     required: true,
