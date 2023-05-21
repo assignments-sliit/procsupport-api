@@ -5,25 +5,8 @@ const Material = require("../../materials/models/MaterialSchema");
 const MaterialType = require("../../materials/models/MaterialTypeSchema");
 const MaterialRequirement = require("../models/MaterialRequirement");
 
-exports.checkPrExists = (req, res, next) => {
-  const prid = "PR" + Math.floor(Math.random() * 50000);
-  PurchaseRequest.findOne({
-    prid: prid,
-  })
-    .exec()
-    .then((foundPr) => {
-      if (foundPr) {
-        res.status(409).json({
-          error: "The Purchase Request Exists",
-          code: "PR_EXISTS",
-        });
-      } else {
-        req.body.prid = prid;
-        next();
-      }
-    });
-};
 
+//Check Auth
 exports.checkUserAndAccess = (req, res, next) => {
   const header = req.headers["authorization"];
 
@@ -116,6 +99,7 @@ exports.checkIfApprover = (req, res, next) => {
   }
 };
 
+//Create
 exports.createPurchaseRequest = (req, res) => {
   req.body._id = new mongoose.Types.ObjectId();
   const newPr = new PurchaseRequest(req.body);
@@ -137,6 +121,23 @@ exports.createPurchaseRequest = (req, res) => {
     });
 };
 
+exports.addMaterialRequirement = (req, res, next) => {
+  const reqid = "MAR" + +Math.floor(Math.random() * 50000);
+  req.body.reqid = reqid;
+
+  const _id = new mongoose.Types.ObjectId();
+  req.body._id = _id;
+
+  const materialRequirement = new MaterialRequirement(req.body);
+
+  materialRequirement.save().then((createdMr) => {
+    res.status(201).json({
+      createdMr: createdMr,
+    });
+  });
+};
+
+//check logics
 exports.checkMaterial = (req, res, next) => {
   const material = req.body.materialId;
 
@@ -157,6 +158,24 @@ exports.checkMaterial = (req, res, next) => {
     });
 };
 
+exports.checkPrExists = (req, res, next) => {
+  const prid = "PR" + Math.floor(Math.random() * 50000);
+  PurchaseRequest.findOne({
+    prid: prid,
+  })
+    .exec()
+    .then((foundPr) => {
+      if (foundPr) {
+        res.status(409).json({
+          error: "The Purchase Request Exists",
+          code: "PR_EXISTS",
+        });
+      } else {
+        req.body.prid = prid;
+        next();
+      }
+    });
+};
 // exports.checkMaterialType = (req, res, next) => {
 //   const materialType = req.body.materialTypeId;
 
@@ -177,22 +196,8 @@ exports.checkMaterial = (req, res, next) => {
 //     });
 // };
 
-exports.addMaterialRequirement = (req, res, next) => {
-  const reqid = "MAR" + +Math.floor(Math.random() * 50000);
-  req.body.reqid = reqid;
 
-  const _id = new mongoose.Types.ObjectId();
-  req.body._id = _id;
-
-  const materialRequirement = new MaterialRequirement(req.body);
-
-  materialRequirement.save().then((createdMr) => {
-    res.status(201).json({
-      createdMr: createdMr,
-    });
-  });
-};
-
+//Status Change
 exports.approvePr = (req, res, next) => {
   PurchaseRequest.findOne({
     prid: req.body.prid,
@@ -271,6 +276,46 @@ exports.declinePr = (req, res, next) => {
     });
 };
 
+exports.pendingPr = (req, res, next) => {
+  PurchaseRequest.findOne({
+    prid: req.body.prid,
+  })
+    .exec()
+    .then((pr) => {
+      if (pr.status == "PENDING") {
+        res.status(409).json({
+          error: "The Purchase Request is already Pending",
+          code: "PR_ALREADY_PENDING",
+        });
+      } else if (pr.status == "DECLINED") {
+        res.status(405).json({
+          error: "A Declined Purchase Request cannot be set to Pending",
+          code: "CANNOT_PEND_DECLINED_PR",
+        });
+      } else {
+        PurchaseRequest.findOneAndUpdate(
+          {
+            prid: req.body.prid,
+          },
+          {
+            status: "PENDING",
+          }
+        )
+          .exec()
+          .then(() => {
+            PurchaseRequest.findOne({
+              prid: req.body.prid,
+            }).then((pendingPr) => {
+              res.status(200).json({
+                pendingPr: pendingPr,
+              });
+            });
+          });
+      }
+    });
+};
+
+// Fetch PRs
 exports.fetchAllPr = (req, res, next) => {
   PurchaseRequest.find()
     .exec()
@@ -459,41 +504,3 @@ exports.fetchDeclinedPr = (req, res, next) => {
     });
 };
 
-exports.pendingPr = (req, res, next) => {
-  PurchaseRequest.findOne({
-    prid: req.body.prid,
-  })
-    .exec()
-    .then((pr) => {
-      if (pr.status == "PENDING") {
-        res.status(409).json({
-          error: "The Purchase Request is already Pending",
-          code: "PR_ALREADY_PENDING",
-        });
-      } else if (pr.status == "DECLINED") {
-        res.status(405).json({
-          error: "A Declined Purchase Request cannot be set to Pending",
-          code: "CANNOT_PEND_DECLINED_PR",
-        });
-      } else {
-        PurchaseRequest.findOneAndUpdate(
-          {
-            prid: req.body.prid,
-          },
-          {
-            status: "PENDING",
-          }
-        )
-          .exec()
-          .then(() => {
-            PurchaseRequest.findOne({
-              prid: req.body.prid,
-            }).then((pendingPr) => {
-              res.status(200).json({
-                pendingPr: pendingPr,
-              });
-            });
-          });
-      }
-    });
-};

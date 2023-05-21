@@ -2,6 +2,7 @@ const express = require("express");
 const routes = express.Router();
 
 const prController = require("../controllers/purchaseRequestController");
+
 //create purchase request
 routes.post(
   "/create",
@@ -10,6 +11,7 @@ routes.post(
   prController.createPurchaseRequest
 );
 
+//PR Status Change
 routes.put(
   "/auth/status/approve",
   prController.checkIfApprover,
@@ -27,6 +29,8 @@ routes.put(
   prController.checkIfApprover,
   prController.pendingPr
 );
+
+//fetch PRs
 
 routes.get("/get/all", prController.fetchAllPr);
 
