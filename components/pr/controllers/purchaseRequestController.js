@@ -195,86 +195,80 @@ exports.addMaterialRequirement = (req, res, next) => {
 
 exports.approvePr = (req, res, next) => {
   PurchaseRequest.findOne({
-    prid:req.body.prid
-  }).exec().then((pr)=>{
-    if(pr.status == "APPROVED"){
-      res.status(409).json({
-        error: "The Purchase Request is already Approved",
-        code: "PR_ALREADY_APPROVED"
-      })
-    }else{
-      PurchaseRequest.findOneAndUpdate(
-        {
-          prid: req.body.prid,
-        },
-        {
-          status: "APPROVED",
-        }
-      )
-        .exec()
-        .then(() => {
-          PurchaseRequest.findOne({
+    prid: req.body.prid,
+  })
+    .exec()
+    .then((pr) => {
+      if (pr.status == "APPROVED") {
+        res.status(409).json({
+          error: "The Purchase Request is already Approved",
+          code: "PR_ALREADY_APPROVED",
+        });
+      } else if (pr.status == "DECLINED") {
+        res.status(405).json({
+          error: "A Declined Purchase Request cannot be Approved",
+          code: "CANNOT_APPROVE_DECLINED_PR",
+        });
+      } else {
+        PurchaseRequest.findOneAndUpdate(
+          {
             prid: req.body.prid,
-          }).then((approvedPr) => {
-            res.status(200).json({
-              approvedPr: approvedPr,
+          },
+          {
+            status: "APPROVED",
+          }
+        )
+          .exec()
+          .then(() => {
+            PurchaseRequest.findOne({
+              prid: req.body.prid,
+            }).then((approvedPr) => {
+              res.status(200).json({
+                approvedPr: approvedPr,
+              });
             });
           });
-        });
-    }
-  })
-
+      }
+    });
 };
 
 exports.declinePr = (req, res, next) => {
-  const token = req.body.token;
-
-  let usertype = "";
-
-  if (token) {
-    const json = JSON.parse(
-      Buffer.from(token.split(".")[1], "base64").toString()
-    );
-
-    Object.entries(json).map((entry) => {
-      if (entry[0] == "usertype") {
-        usertype = entry[1].toString();
-      }
-    });
-
-    if (usertype && usertype == "APPROVER") {
-      PurchaseRequest.findOneAndUpdate(
-        {
-          prid: req.body.prid,
-        },
-        {
-          status: "DECLINED",
-        }
-      )
-        .exec()
-        .then(() => {
-          PurchaseRequest.findOne({
+  PurchaseRequest.findOne({
+    prid: req.body.prid,
+  })
+    .exec()
+    .then((pr) => {
+      if (pr.status == "DECLINED") {
+        res.status(409).json({
+          error: "The Purchase Request is already Declined",
+          code: "PR_ALREADY_DECLINED",
+        });
+      } else if (pr.status == "PENDING") {
+        res.status(405).json({
+          error: "A Pending Purchase Request cannot be Declined",
+          code: "CANNOT_DECLINE_PENDING_PR",
+        });
+      } else {
+        PurchaseRequest.findOneAndUpdate(
+          {
             prid: req.body.prid,
-          }).then((declinedPr) => {
-            res.status(200).json({
-              declinedPr: declinedPr,
+          },
+          {
+            status: "DECLINED",
+          }
+        )
+          .exec()
+          .then(() => {
+            PurchaseRequest.findOne({
+              prid: req.body.prid,
+            }).then((pendingPr) => {
+              res.status(200).json({
+                pendingPr: pendingPr,
+              });
             });
           });
-        });
-    } else {
-      res.status(409).json({
-        error: "Access Denied",
-        code: "ACCESS_DENIED",
-      });
-    }
-  }
-  //cannot find token
-  else {
-    res.status(409).json({
-      error: "Cannot find auth token",
-      code: "AUTH_TOKEN_NOT_FOUND",
+      }
     });
-  }
 };
 
 exports.fetchAllPr = (req, res, next) => {
@@ -462,5 +456,44 @@ exports.fetchDeclinedPr = (req, res, next) => {
         error: err,
         code: "UNKNOWN_SERVER_ERROR",
       });
+    });
+};
+
+exports.pendingPr = (req, res, next) => {
+  PurchaseRequest.findOne({
+    prid: req.body.prid,
+  })
+    .exec()
+    .then((pr) => {
+      if (pr.status == "PENDING") {
+        res.status(409).json({
+          error: "The Purchase Request is already Pending",
+          code: "PR_ALREADY_PENDING",
+        });
+      } else if (pr.status == "DECLINED") {
+        res.status(405).json({
+          error: "A Declined Purchase Request cannot be set to Pending",
+          code: "CANNOT_PEND_DECLINED_PR",
+        });
+      } else {
+        PurchaseRequest.findOneAndUpdate(
+          {
+            prid: req.body.prid,
+          },
+          {
+            status: "PENDING",
+          }
+        )
+          .exec()
+          .then(() => {
+            PurchaseRequest.findOne({
+              prid: req.body.prid,
+            }).then((pendingPr) => {
+              res.status(200).json({
+                pendingPr: pendingPr,
+              });
+            });
+          });
+      }
     });
 };

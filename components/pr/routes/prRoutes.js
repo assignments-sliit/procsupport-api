@@ -10,11 +10,21 @@ routes.post(
   prController.createPurchaseRequest
 );
 
-routes.put("/auth/status/approve",
-prController.checkIfApprover,
-prController.approvePr)
+routes.put(
+  "/auth/status/approve",
+  prController.checkIfApprover,
+  prController.approvePr
+)
 
-routes.put("/status/decline",prController.declinePr)
+routes.put(
+  "/auth/status/decline",
+  prController.checkIfApprover,
+  prController.declinePr)
+
+routes.put(
+  "/auth/status/pending",
+  prController.checkIfApprover,
+  prController.pendingPr)
 
 routes.get("/get/all",prController.fetchAllPr)
 
