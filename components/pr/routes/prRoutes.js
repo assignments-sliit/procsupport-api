@@ -2,6 +2,7 @@ const express = require("express");
 const routes = express.Router();
 
 const prController = require("../controllers/purchaseRequestController");
+
 //create purchase request
 routes.post(
   "/create",
@@ -10,18 +11,39 @@ routes.post(
   prController.createPurchaseRequest
 );
 
-routes.put("/status/approve",prController.approvePr)
+//PR Status Change
+routes.put(
+  "/auth/status/approve",
+  prController.checkIfApprover,
+  prController.approvePr
+);
 
-routes.put("/status/decline",prController.declinePr)
+routes.put(
+  "/auth/status/decline",
+  prController.checkIfApprover,
+  prController.declinePr
+);
 
-routes.get("/get/all",prController.fetchAllPr)
+routes.put(
+  "/auth/status/pending",
+  prController.checkIfApprover,
+  prController.pendingPr
+);
 
-routes.get("/get/auth/all",prController.fetchAllPrWithAuth)
+//fetch PRs
 
-routes.get("/get/pr/:prid",prController.fetchPrByPrId)
+routes.get("/get/all", prController.fetchAllPr);
 
-routes.get("/get/auth/pr/:prid",prController.fetchPrByPrIdWithAuth)
+routes.get("/get/auth/all", prController.fetchAllPrWithAuth);
 
-routes.get("/get/approved", prController.fetchApprovedPr)
+routes.get("/get/pr/:prid", prController.fetchPrByPrId);
+
+routes.get("/get/auth/pr/:prid", prController.fetchPrByPrIdWithAuth);
+
+routes.get("/get/approved/all", prController.fetchApprovedPr);
+
+routes.get("/get/declined/all", prController.fetchDeclinedPr);
+
+routes.get("/get/pending/all", prController.fetchPendingPr);
 
 module.exports = routes;
