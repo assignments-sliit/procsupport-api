@@ -3,7 +3,6 @@ const routes = express.Router();
 
 const materialTypeController = require('../controller/materialTypeController');
 
-//add material type
 
 routes.get(
     "/get/all",
@@ -17,7 +16,7 @@ routes.get(
     materialTypeController.getMaterialTypeById
 )
 
-
+//add material type
 routes.post( 
     "/new",
     materialTypeController.checkUserAndAccess,

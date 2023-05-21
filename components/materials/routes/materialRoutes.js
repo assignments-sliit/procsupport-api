@@ -2,18 +2,24 @@ const express = require("express");
 const routes = express.Router();
 
 const materialController = require("../controller/materialController");
+const userController = require("../../auth/controller/userController");
 
-routes.post("/add", materialController.addMaterial);
+routes.post(
+  "/add", 
+  userController.checkIfAdmin,
+  materialController.checkMaterialExists,
+  materialController.getMaterialTypeDetails,
+  materialController.addMaterial);
 
 routes.patch(
   "/qty/add",
-  materialController.checkMaterialExists,
+  materialController.getMaterialQty,
   materialController.addQtyToMaterial
 );
 
 routes.patch(
   "/qty/remove",
-  materialController.checkMaterialExists,
+  materialController.getMaterialQty,
   materialController.removeQtyToMaterial
 );
 

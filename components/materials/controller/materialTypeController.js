@@ -3,29 +3,16 @@ const MaterialType = require("../../materials/models/MaterialTypeSchema");
 
 //CRUD
 exports.addMaterialType = (req, res) => {
-  MaterialType.findOne({
-    materialType: req.body.materialType,
-  })
-    .exec()
-    .then((foundMt) => {
-      if (foundMt) {
-        res.status(409).json({
-          error: "Material Type Exists",
-          code: "MATERIAL_TYPE_EXISTS",
-        });
-      } else {
-        const _id = new mongoose.Types.ObjectId();
-        req.body._id = _id;
-        const mt = new MaterialType(req.body);
+  const _id = new mongoose.Types.ObjectId();
+  req.body._id = _id;
+  const mt = new MaterialType(req.body);
 
-        mt.save().then((createdmt) => {
-          res.status(201).json({
-            createdMaterialType: createdmt,
-            code: "MATERIAL_TYPE_CREATED",
-          });
-        });
-      }
+  mt.save().then((createdmt) => {
+    res.status(201).json({
+      createdMaterialType: createdmt,
+      code: "MATERIAL_TYPE_CREATED",
     });
+  });
 };
 
 exports.deleteMaterialType = (req, res, next) => {
@@ -55,7 +42,7 @@ exports.deleteMaterialType = (req, res, next) => {
     });
 };
 
-exports.getAllMaterialTypes = (req,res,next) =>{
+exports.getAllMaterialTypes = (req, res, next) => {
   MaterialType.find()
     .exec()
     .then((mtype) => {
@@ -77,25 +64,27 @@ exports.getAllMaterialTypes = (req,res,next) =>{
         code: "UNKNOWN_SERVER_ERROR",
       });
     });
-}
+};
 
-exports.getMaterialTypeById = (req,res,next) => {
+exports.getMaterialTypeById = (req, res, next) => {
   MaterialType.findOne({
-    materialTypeId: req.params.materialTypeId
-  }).exec().then((oneMt)=>{
-    if(oneMt){
-      res.status(200).json({
-        data: oneMt,
-        code: "MTFOUND",
-      });
-    } else {
-      res.status(404).json({
-        error: "Material Type does not exist",
-        code: "NO_MT_EXISTS",
-      });
-    }
+    materialTypeId: req.params.materialTypeId,
   })
-}
+    .exec()
+    .then((oneMt) => {
+      if (oneMt) {
+        res.status(200).json({
+          data: oneMt,
+          code: "MTFOUND",
+        });
+      } else {
+        res.status(404).json({
+          error: "Material Type does not exist",
+          code: "NO_MT_EXISTS",
+        });
+      }
+    });
+};
 
 //Check Auth
 exports.checkUserAndAccess = (req, res, next) => {
@@ -144,7 +133,7 @@ exports.checkUserAndAccess = (req, res, next) => {
   }
 };
 
-exports.checkAccessForGet = (req,res,next) =>{
+exports.checkAccessForGet = (req, res, next) => {
   const header = req.headers["authorization"];
 
   if (typeof header !== "undefined") {
@@ -172,7 +161,10 @@ exports.checkAccessForGet = (req,res,next) =>{
       }
     });
 
-    if (usertype && usertype.includes("ADMIN", "REQUESTOR", "PURCHASER", "RECEIVER")){
+    if (
+      usertype &&
+      usertype.includes("ADMIN", "REQUESTOR", "PURCHASER", "RECEIVER")
+    ) {
       next();
     } else {
       res.status(409).json({
@@ -188,13 +180,13 @@ exports.checkAccessForGet = (req,res,next) =>{
       code: "AUTH_TOKEN_NOT_FOUND",
     });
   }
-}
+};
 
 //check logic
 exports.checkMaterialTypeExists = (req, res, next) => {
   const materialTypeId = req.body.materialTypeId || req.params.materialTypeId;
   MaterialType.findOne({
-    materialTypeId: materialTypeId
+    materialTypeId: materialTypeId,
   })
     .exec()
     .then((foundMt) => {
@@ -204,18 +196,16 @@ exports.checkMaterialTypeExists = (req, res, next) => {
           code: "MT_EXISTS",
         });
       } else {
-        
         next();
       }
     });
 };
 
 //utils
-exports.createNewId = (req,res,next)=>{
+exports.createNewId = (req, res, next) => {
   req.body.materialTypeId = "MATY" + Math.floor(Math.random() * 50000);
 
-  if(req.body.materialTypeId){
-    next()
+  if (req.body.materialTypeId) {
+    next();
   }
-  
-}
+};
