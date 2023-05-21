@@ -30,13 +30,13 @@ exports.addMaterialType = (req, res) => {
 
 exports.deleteMaterialType = (req, res, next) => {
   MaterialType.findOne({
-    materialType: req.body.materialType,
+    materialTypeId: req.body.materialTypeId,
   })
     .exec()
     .then((foundMt) => {
       if (foundMt) {
         MaterialType.deleteOne({
-          materialType: req.body.materialType,
+          materialTypeId: req.body.materialTypeId,
         })
           .exec()
           .then(() => {

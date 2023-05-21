@@ -29,7 +29,6 @@ routes.post(
 routes.delete( 
     "/delete",
     materialTypeController.checkUserAndAccess,
-    materialTypeController.checkMaterialTypeExists,
     materialTypeController.deleteMaterialType)   
 
 
