@@ -65,6 +65,22 @@ exports.getMaterialTypeDetails = (req,res,next) =>{
   })
 }
 
+exports.getAllMaterials = (req,res,next) =>{
+  Material.find().exec().then((allMaterials)=>{
+    if(allMaterials.length < 1){
+      res.status(404).json({
+        error: "No Materials were found",
+        code: "NO_MATERIAL_FOUND"
+      })
+    }else{
+      res.status(200).json({
+        data: allMaterials,
+        code: "ALL_MATERIALS_FOUND"
+      })
+    }
+  })
+}
+
 exports.addQtyToMaterial = (req, res) => {
   Material.updateOne(
     { materialId: req.body.materialId },

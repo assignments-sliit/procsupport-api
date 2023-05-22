@@ -3,6 +3,7 @@ const routes = express.Router();
 
 const materialController = require("../controller/materialController");
 const userController = require("../../auth/controller/userController");
+const materialTypeController = require("../controller/materialTypeController");
 
 routes.post(
   "/add", 
@@ -22,5 +23,11 @@ routes.patch(
   materialController.getMaterialQty,
   materialController.removeQtyToMaterial
 );
+
+routes.get(
+  "/auth/get/all",
+  materialTypeController.checkAccessForGet,
+  materialController.getAllMaterials
+)
 
 module.exports = routes;
