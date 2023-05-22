@@ -6,7 +6,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Create Admin User
 ### Method: POST
 >```
->{{baseUrl}}/api/users/create
+>https://procsupport-api.onrender.com/api/users/create
 >```
 ### Body (**raw**)
 
@@ -25,7 +25,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Create New User - REQUESTOR
 ### Method: POST
 >```
->{{baseUrl}}/api/users/create
+>https://procsupport-api.onrender.com/api/users/create
 >```
 ### Body (**raw**)
 
@@ -45,7 +45,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Create New User - RECEIVER
 ### Method: POST
 >```
->{{baseUrl}}/api/users/create
+>https://procsupport-api.onrender.com/api/users/create
 >```
 ### Body (**raw**)
 
@@ -65,7 +65,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Create New User - APPROVER
 ### Method: POST
 >```
->{{baseUrl}}/api/users/create
+>https://procsupport-api.onrender.com/api/users/create
 >```
 ### Body (**raw**)
 
@@ -85,7 +85,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Create New User - PURCHASER
 ### Method: POST
 >```
->{{baseUrl}}/api/users/create
+>https://procsupport-api.onrender.com/api/users/create
 >```
 ### Body (**raw**)
 
@@ -105,7 +105,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: User Login Admin
 ### Method: POST
 >```
->{{baseUrl}}/api/users/login
+>https://procsupport-api.onrender.com/api/users/login
 >```
 ### Body (**raw**)
 
@@ -128,7 +128,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Requestor Login
 ### Method: POST
 >```
->{{baseUrl}}/api/users/login
+>https://procsupport-api.onrender.com/api/users/login
 >```
 ### Body (**raw**)
 
@@ -143,7 +143,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 
 |Param|value|Type|
 |---|---|---|
-|token|eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDTDZ2bXB3ZnpNVzVTdjMwUmRESDF3dUNxZ0w5aUVsekNvTEZxVXJ6NEhFIn0.eyJleHAiOjE2ODAxNjY1NzMsImlhdCI6MTY4MDE2Mjk3MywianRpIjoiMmM0ZGU0YjYtMTMxNy00NjNiLTkxNDctYWFmYjQzNDc0YjVhIiwiaXNzIjoiaHR0cHM6Ly9pZnMyM3IxYm5kZGVwY21iLnJuZC5pZnNkZXZ3b3JsZC5jb20vYXV0aC9yZWFsbXMvaWZzMjNyMWJuZGRlcGNtYiIsImF1ZCI6WyJpZnMyM3IxYm5kZGVwY21iIiwiYWNjb3VudCJdLCJzdWIiOiI4NzIwNjkyMi1hMDVmLTQ3M2ItOWE4My02ODJkMDlmOGY2NTYiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJJRlNfY29ubmVjdCIsInNlc3Npb25fc3RhdGUiOiJiY2ExYzI4Zi00MDE4LTQwNzItYWE2NS0xYWZkYWNiZWFhMjgiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cHM6Ly9pZnMyM3IxYm5kZGVwY21iLWV4dC1ybmQuY29ycG9yYXRlLmlmcy5jb20iLCJodHRwczovL2lmczIzcjFibmRkZXBjbWIucm5kLmlmc2RldndvcmxkLmNvbSJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsImRlZmF1bHQtcm9sZXMtaWZzMjNyMWJuZGRlcGNtYiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgYXVkaWVuY2UgbWljcm9wcm9maWxlLWp3dCBlbWFpbCIsInNpZCI6ImJjYTFjMjhmLTQwMTgtNDA3Mi1hYTY1LTFhZmRhY2JlYWEyOCIsInVwbiI6Imlmc2FwcCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZ3JvdXBzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJkZWZhdWx0LXJvbGVzLWlmczIzcjFibmRkZXBjbWIiXSwicHJlZmVycmVkX3VzZXJuYW1lIjoiaWZzYXBwIiwiZW1haWwiOiJhZG1pbmlzdHJhdG9yQHNlcnZlcm5hbWUifQ.BTCh6rk4vj_MvwGIfwmaqPXLZ-GRBKxYC218BA4porRI-hSjZMzEhxa2U1PHZ-7TVKiLhB3w4cJbIODAn1Q62IRRmgl8t2Lol6lF-sKDbTEmFnWZB-L1qO6yu2b_bqOweXTwL-6e64YavaoJ2Uq-MEyA3O28g58hYHcjLpbA93tyYU8-CWYVKyPoWAq3s3kXEEun-XBVzd0obGpQLVgPB0AGPrELp-f7ihRooEVcCSgvZVsMPEhiFGQrm4Koy90aEBRm8jH-n5eNM4_awX4Yagt0l-OqPOhd4IVGZFZ_yk4Eq44jzApKZb1iNG0zgBHZCWszKBzSrUZQpK6SMzAVjg|string|
+|token|{{access_token}}|string|
 
 
 
@@ -152,7 +152,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Purchaser Login
 ### Method: POST
 >```
->{{baseUrl}}/api/users/login
+>https://procsupport-api.onrender.com/api/users/login
 >```
 ### Body (**raw**)
 
@@ -167,7 +167,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 
 |Param|value|Type|
 |---|---|---|
-|token|eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDTDZ2bXB3ZnpNVzVTdjMwUmRESDF3dUNxZ0w5aUVsekNvTEZxVXJ6NEhFIn0.eyJleHAiOjE2ODAxNjY1NzMsImlhdCI6MTY4MDE2Mjk3MywianRpIjoiMmM0ZGU0YjYtMTMxNy00NjNiLTkxNDctYWFmYjQzNDc0YjVhIiwiaXNzIjoiaHR0cHM6Ly9pZnMyM3IxYm5kZGVwY21iLnJuZC5pZnNkZXZ3b3JsZC5jb20vYXV0aC9yZWFsbXMvaWZzMjNyMWJuZGRlcGNtYiIsImF1ZCI6WyJpZnMyM3IxYm5kZGVwY21iIiwiYWNjb3VudCJdLCJzdWIiOiI4NzIwNjkyMi1hMDVmLTQ3M2ItOWE4My02ODJkMDlmOGY2NTYiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJJRlNfY29ubmVjdCIsInNlc3Npb25fc3RhdGUiOiJiY2ExYzI4Zi00MDE4LTQwNzItYWE2NS0xYWZkYWNiZWFhMjgiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cHM6Ly9pZnMyM3IxYm5kZGVwY21iLWV4dC1ybmQuY29ycG9yYXRlLmlmcy5jb20iLCJodHRwczovL2lmczIzcjFibmRkZXBjbWIucm5kLmlmc2RldndvcmxkLmNvbSJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsImRlZmF1bHQtcm9sZXMtaWZzMjNyMWJuZGRlcGNtYiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgYXVkaWVuY2UgbWljcm9wcm9maWxlLWp3dCBlbWFpbCIsInNpZCI6ImJjYTFjMjhmLTQwMTgtNDA3Mi1hYTY1LTFhZmRhY2JlYWEyOCIsInVwbiI6Imlmc2FwcCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZ3JvdXBzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJkZWZhdWx0LXJvbGVzLWlmczIzcjFibmRkZXBjbWIiXSwicHJlZmVycmVkX3VzZXJuYW1lIjoiaWZzYXBwIiwiZW1haWwiOiJhZG1pbmlzdHJhdG9yQHNlcnZlcm5hbWUifQ.BTCh6rk4vj_MvwGIfwmaqPXLZ-GRBKxYC218BA4porRI-hSjZMzEhxa2U1PHZ-7TVKiLhB3w4cJbIODAn1Q62IRRmgl8t2Lol6lF-sKDbTEmFnWZB-L1qO6yu2b_bqOweXTwL-6e64YavaoJ2Uq-MEyA3O28g58hYHcjLpbA93tyYU8-CWYVKyPoWAq3s3kXEEun-XBVzd0obGpQLVgPB0AGPrELp-f7ihRooEVcCSgvZVsMPEhiFGQrm4Koy90aEBRm8jH-n5eNM4_awX4Yagt0l-OqPOhd4IVGZFZ_yk4Eq44jzApKZb1iNG0zgBHZCWszKBzSrUZQpK6SMzAVjg|string|
+|token|{{access_token}}|string|
 
 
 
@@ -176,7 +176,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Approver Login
 ### Method: POST
 >```
->{{baseUrl}}/api/users/login
+>https://procsupport-api.onrender.com/api/users/login
 >```
 ### Body (**raw**)
 
@@ -191,7 +191,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 
 |Param|value|Type|
 |---|---|---|
-|token|eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDTDZ2bXB3ZnpNVzVTdjMwUmRESDF3dUNxZ0w5aUVsekNvTEZxVXJ6NEhFIn0.eyJleHAiOjE2ODAxNjY1NzMsImlhdCI6MTY4MDE2Mjk3MywianRpIjoiMmM0ZGU0YjYtMTMxNy00NjNiLTkxNDctYWFmYjQzNDc0YjVhIiwiaXNzIjoiaHR0cHM6Ly9pZnMyM3IxYm5kZGVwY21iLnJuZC5pZnNkZXZ3b3JsZC5jb20vYXV0aC9yZWFsbXMvaWZzMjNyMWJuZGRlcGNtYiIsImF1ZCI6WyJpZnMyM3IxYm5kZGVwY21iIiwiYWNjb3VudCJdLCJzdWIiOiI4NzIwNjkyMi1hMDVmLTQ3M2ItOWE4My02ODJkMDlmOGY2NTYiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJJRlNfY29ubmVjdCIsInNlc3Npb25fc3RhdGUiOiJiY2ExYzI4Zi00MDE4LTQwNzItYWE2NS0xYWZkYWNiZWFhMjgiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cHM6Ly9pZnMyM3IxYm5kZGVwY21iLWV4dC1ybmQuY29ycG9yYXRlLmlmcy5jb20iLCJodHRwczovL2lmczIzcjFibmRkZXBjbWIucm5kLmlmc2RldndvcmxkLmNvbSJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsImRlZmF1bHQtcm9sZXMtaWZzMjNyMWJuZGRlcGNtYiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgYXVkaWVuY2UgbWljcm9wcm9maWxlLWp3dCBlbWFpbCIsInNpZCI6ImJjYTFjMjhmLTQwMTgtNDA3Mi1hYTY1LTFhZmRhY2JlYWEyOCIsInVwbiI6Imlmc2FwcCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZ3JvdXBzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJkZWZhdWx0LXJvbGVzLWlmczIzcjFibmRkZXBjbWIiXSwicHJlZmVycmVkX3VzZXJuYW1lIjoiaWZzYXBwIiwiZW1haWwiOiJhZG1pbmlzdHJhdG9yQHNlcnZlcm5hbWUifQ.BTCh6rk4vj_MvwGIfwmaqPXLZ-GRBKxYC218BA4porRI-hSjZMzEhxa2U1PHZ-7TVKiLhB3w4cJbIODAn1Q62IRRmgl8t2Lol6lF-sKDbTEmFnWZB-L1qO6yu2b_bqOweXTwL-6e64YavaoJ2Uq-MEyA3O28g58hYHcjLpbA93tyYU8-CWYVKyPoWAq3s3kXEEun-XBVzd0obGpQLVgPB0AGPrELp-f7ihRooEVcCSgvZVsMPEhiFGQrm4Koy90aEBRm8jH-n5eNM4_awX4Yagt0l-OqPOhd4IVGZFZ_yk4Eq44jzApKZb1iNG0zgBHZCWszKBzSrUZQpK6SMzAVjg|string|
+|token|{{access_token}}|string|
 
 
 
@@ -200,7 +200,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: User Login Copy 2
 ### Method: POST
 >```
->{{baseUrl}}/api/users/login
+>https://procsupport-api.onrender.com/api/users/login
 >```
 ### Body (**raw**)
 
@@ -215,7 +215,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 
 |Param|value|Type|
 |---|---|---|
-|token|eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJDTDZ2bXB3ZnpNVzVTdjMwUmRESDF3dUNxZ0w5aUVsekNvTEZxVXJ6NEhFIn0.eyJleHAiOjE2ODAxNjY1NzMsImlhdCI6MTY4MDE2Mjk3MywianRpIjoiMmM0ZGU0YjYtMTMxNy00NjNiLTkxNDctYWFmYjQzNDc0YjVhIiwiaXNzIjoiaHR0cHM6Ly9pZnMyM3IxYm5kZGVwY21iLnJuZC5pZnNkZXZ3b3JsZC5jb20vYXV0aC9yZWFsbXMvaWZzMjNyMWJuZGRlcGNtYiIsImF1ZCI6WyJpZnMyM3IxYm5kZGVwY21iIiwiYWNjb3VudCJdLCJzdWIiOiI4NzIwNjkyMi1hMDVmLTQ3M2ItOWE4My02ODJkMDlmOGY2NTYiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJJRlNfY29ubmVjdCIsInNlc3Npb25fc3RhdGUiOiJiY2ExYzI4Zi00MDE4LTQwNzItYWE2NS0xYWZkYWNiZWFhMjgiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cHM6Ly9pZnMyM3IxYm5kZGVwY21iLWV4dC1ybmQuY29ycG9yYXRlLmlmcy5jb20iLCJodHRwczovL2lmczIzcjFibmRkZXBjbWIucm5kLmlmc2RldndvcmxkLmNvbSJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsImRlZmF1bHQtcm9sZXMtaWZzMjNyMWJuZGRlcGNtYiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgYXVkaWVuY2UgbWljcm9wcm9maWxlLWp3dCBlbWFpbCIsInNpZCI6ImJjYTFjMjhmLTQwMTgtNDA3Mi1hYTY1LTFhZmRhY2JlYWEyOCIsInVwbiI6Imlmc2FwcCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZ3JvdXBzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJkZWZhdWx0LXJvbGVzLWlmczIzcjFibmRkZXBjbWIiXSwicHJlZmVycmVkX3VzZXJuYW1lIjoiaWZzYXBwIiwiZW1haWwiOiJhZG1pbmlzdHJhdG9yQHNlcnZlcm5hbWUifQ.BTCh6rk4vj_MvwGIfwmaqPXLZ-GRBKxYC218BA4porRI-hSjZMzEhxa2U1PHZ-7TVKiLhB3w4cJbIODAn1Q62IRRmgl8t2Lol6lF-sKDbTEmFnWZB-L1qO6yu2b_bqOweXTwL-6e64YavaoJ2Uq-MEyA3O28g58hYHcjLpbA93tyYU8-CWYVKyPoWAq3s3kXEEun-XBVzd0obGpQLVgPB0AGPrELp-f7ihRooEVcCSgvZVsMPEhiFGQrm4Koy90aEBRm8jH-n5eNM4_awX4Yagt0l-OqPOhd4IVGZFZ_yk4Eq44jzApKZb1iNG0zgBHZCWszKBzSrUZQpK6SMzAVjg|string|
+|token|{{access_token}}|string|
 
 
 
@@ -224,7 +224,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Get User by Username
 ### Method: GET
 >```
->{{baseUrl}}/api/users/find/username/linisha12w
+>https://procsupport-api.onrender.com/api/users/find/username/linisha12w
 >```
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
@@ -232,7 +232,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Get User Type
 ### Method: GET
 >```
->{{baseUrl}}/api/users/get/type/polroti
+>https://procsupport-api.onrender.com/api/users/get/type/polroti
 >```
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
@@ -240,7 +240,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Check User Type
 ### Method: GET
 >```
->{{baseUrl}}/api/users/type/check
+>https://procsupport-api.onrender.com/api/users/type/check
 >```
 ### Body (**raw**)
 
@@ -257,7 +257,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Get User type from token
 ### Method: GET
 >```
->{{baseUrl}}/api/users//get/usertype/token
+>https://procsupport-api.onrender.com/api/users/get/usertype/token
 >```
 ### Body (**raw**)
 
@@ -273,7 +273,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Delete Users
 ### Method: DELETE
 >```
->{{baseUrl}}/api/users/delete/one
+>https://procsupport-api.onrender.com/api/users/delete/one
 >```
 ### Body (**raw**)
 
@@ -289,7 +289,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Find All users for Admin View
 ### Method: GET
 >```
->{{baseUrl}}/api/users/admin/get/all
+>https://procsupport-api.onrender.com/api/users/admin/get/all
 >```
 ### Body (**raw**)
 
@@ -312,7 +312,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Add Budget Amount
 ### Method: POST
 >```
->{{baseUrl}}/api/budget/add
+>https://procsupport-api.onrender.com/api/budget/add
 >```
 ### Body (**raw**)
 
@@ -337,7 +337,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Get General Budget
 ### Method: GET
 >```
->{{baseUrl}}/api/budget/auth/get
+>https://procsupport-api.onrender.com/api/budget/auth/get
 >```
 ### 🔑 Authentication bearer
 
@@ -362,7 +362,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Add Material Type
 ### Method: POST
 >```
->{{baseUrl}}/api/mt/new
+>https://procsupport-api.onrender.com/api/mt/new
 >```
 ### Body (**raw**)
 
@@ -386,7 +386,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Delete Material Type
 ### Method: DELETE
 >```
->{{baseUrl}}/api/mt/delete
+>https://procsupport-api.onrender.com/api/mt/delete
 >```
 ### Body (**raw**)
 
@@ -409,7 +409,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Get All Material Types
 ### Method: GET
 >```
->{{baseUrl}}/api/mt/get/all
+>https://procsupport-api.onrender.com/api/mt/get/all
 >```
 ### 🔑 Authentication bearer
 
@@ -424,7 +424,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Get All Material Type By ID
 ### Method: GET
 >```
->{{baseUrl}}/api/mt/get/one/MATY14142
+>https://procsupport-api.onrender.com/api/mt/get/one/MATY14142
 >```
 ### 🔑 Authentication bearer
 
@@ -439,7 +439,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Add Material
 ### Method: POST
 >```
->{{baseUrl}}/api/material/add
+>https://procsupport-api.onrender.com/api/material/add
 >```
 ### Body (**raw**)
 
@@ -522,7 +522,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Get All Purchase Requests
 ### Method: GET
 >```
->{{baseUrl}}/api/pr/get/all
+>https://procsupport-api.onrender.com/api/pr/get/all
 >```
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
@@ -568,7 +568,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Approve PR
 ### Method: PUT
 >```
->{{baseUrl}}/api/pr/auth/status/approve
+>https://procsupport-api.onrender.com/api/pr/auth/status/approve
 >```
 ### Body (**raw**)
 
@@ -591,7 +591,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Decline PR
 ### Method: PUT
 >```
->{{baseUrl}}/api/pr/auth/status/decline
+>https://procsupport-api.onrender.com/api/pr/auth/status/decline
 >```
 ### Body (**raw**)
 
@@ -614,7 +614,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Make a PR Pending
 ### Method: PUT
 >```
->{{baseUrl}}/api/pr/auth/status/pending
+>https://procsupport-api.onrender.com/api/pr/auth/status/pending
 >```
 ### Body (**raw**)
 
@@ -637,7 +637,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Fetch all Approved PRs
 ### Method: GET
 >```
->{{baseUrl}}/api/pr/get/approved/all
+>https://procsupport-api.onrender.com/api/pr/get/approved/all
 >```
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
@@ -645,7 +645,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Fetch all Declined PRs
 ### Method: GET
 >```
->{{baseUrl}}/api/pr/get/declined/all
+>https://procsupport-api.onrender.com/api/pr/get/declined/all
 >```
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
@@ -653,7 +653,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Fetch all Pending PRs
 ### Method: GET
 >```
->{{baseUrl}}/api/pr/get/pending/all
+>https://procsupport-api.onrender.com/api/pr/get/pending/all
 >```
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
@@ -661,7 +661,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Create Purchase Request
 ### Method: POST
 >```
->{{baseUrl}}/api/pr/create
+>https://procsupport-api.onrender.com/api/pr/create
 >```
 ### Body (**raw**)
 
@@ -730,7 +730,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Get all Rejected Purchase Orders
 ### Method: GET
 >```
->{{baseUrl}}/api/po/get/rejected
+>https://procsupport-api.onrender.com/api/po/get/rejected
 >```
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
@@ -738,7 +738,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Get all Pending Purchase Orders
 ### Method: GET
 >```
->{{baseUrl}}/api/po/get/pending
+>https://procsupport-api.onrender.com/api/po/get/pending
 >```
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
@@ -746,7 +746,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Get all Approved Purchase Orders
 ### Method: GET
 >```
->{{baseUrl}}/api/po/get/approved
+>https://procsupport-api.onrender.com/api/po/get/approved
 >```
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
@@ -754,7 +754,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Get all Invoiced Purchase Orders
 ### Method: GET
 >```
->{{baseUrl}}/api/po/get/invoiced
+>https://procsupport-api.onrender.com/api/po/get/invoiced
 >```
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
@@ -762,7 +762,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Get all Delivered Purchase Orders
 ### Method: GET
 >```
->{{baseUrl}}/api/po/get/delivered
+>https://procsupport-api.onrender.com/api/po/get/delivered
 >```
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
@@ -817,7 +817,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Invoice Purchase Orders
 ### Method: PUT
 >```
->{{baseUrl}}/api/po/invoice
+>https://procsupport-api.onrender.com/api/po/invoice
 >```
 ### Body (**raw**)
 
@@ -865,7 +865,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Get All Purchase Orders
 ### Method: GET
 >```
->{{baseUrl}}/api/po/get/all
+>https://procsupport-api.onrender.com/api/po/get/all
 >```
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
@@ -873,7 +873,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Update PO
 ### Method: PUT
 >```
->{{baseUrl}}/api/po/update/PO231
+>https://procsupport-api.onrender.com/api/po/update/PO231
 >```
 ### Body (**raw**)
 
@@ -898,7 +898,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Get One Purchase Order
 ### Method: GET
 >```
->{{baseUrl}}/api/po/get/one/PO231
+>https://procsupport-api.onrender.com/api/po/get/one/PO231
 >```
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
@@ -906,7 +906,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Get One Purchase Order Copy
 ### Method: DELETE
 >```
->{{baseUrl}}/api/po/delete/PO231
+>https://procsupport-api.onrender.com/api/po/delete/PO231
 >```
 ### 🔑 Authentication bearer
 
@@ -1045,7 +1045,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Get All Suppliers
 ### Method: GET
 >```
->{{baseUrl}}/api/suppliers/get/all
+>https://procsupport-api.onrender.com/api/suppliers/get/all
 >```
 ### Body (**raw**)
 
@@ -1066,7 +1066,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Create Supplier
 ### Method: POST
 >```
->{{baseUrl}}/api/suppliers/create
+>https://procsupport-api.onrender.com/api/suppliers/create
 >```
 ### Body (**raw**)
 
@@ -1095,7 +1095,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Get one supplier
 ### Method: GET
 >```
->{{baseUrl}}/api/suppliers/get/one/polsup
+>https://procsupport-api.onrender.com/api/suppliers/get/one/polsup
 >```
 ### Body (**raw**)
 
@@ -1116,7 +1116,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Supplier Login
 ### Method: POST
 >```
->{{baseUrl}}/api/suppliers/login
+>https://procsupport-api.onrender.com/api/suppliers/login
 >```
 ### Body (**raw**)
 
@@ -1133,7 +1133,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Delete Supplier
 ### Method: DELETE
 >```
->{{baseUrl}}/api/suppliers/delete
+>https://procsupport-api.onrender.com/api/suppliers/delete
 >```
 ### Body (**raw**)
 
@@ -1157,7 +1157,7 @@ API Documentation for ProcSupport - Procurement System for ESAD Module
 ## End-point: Update Supplier
 ### Method: PUT
 >```
->{{baseUrl}}/api/suppliers/auth/update/polsup
+>https://procsupport-api.onrender.com/api/suppliers/auth/update/polsup
 >```
 ### Body (**raw**)
 
