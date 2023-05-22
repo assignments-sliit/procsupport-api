@@ -345,7 +345,6 @@ exports.fetchAllPrWithAuth = (req, res, next) => {
     const bearer = header.split(" ");
 
     const token = bearer[1];
-    console.log(token);
     req.token = token;
   }
   let _id;
@@ -411,7 +410,6 @@ exports.fetchPrByPrIdWithAuth = (req, res, next) => {
     const bearer = header.split(" ");
 
     const token = bearer[1];
-    console.log(token);
     req.token = token;
   }
 
@@ -435,7 +433,6 @@ exports.fetchPrByPrIdWithAuth = (req, res, next) => {
       .exec()
       .then((singlePr) => {
         if (singlePr) {
-          console.log(singlePr);
           res.status(200).json({
             purchase_request: singlePr,
             code: "SINGLE_PR_FOUND",

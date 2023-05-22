@@ -137,7 +137,7 @@ exports.login = (req, res) => {
       }
     })
     .catch((err) => {
-      console.log(err);
+      
       res.status(500).json({
         error: err,
         code: "UNKNOWN_ERROR",
@@ -230,7 +230,6 @@ exports.getAllUsersForAdmin = (req, res) => {
     const bearer = header.split(" ");
 
     const token = bearer[1];
-    console.log(token);
     req.token = token;
   }
 

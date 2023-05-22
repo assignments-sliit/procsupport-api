@@ -78,7 +78,6 @@ exports.getAmount = (req, res, next) => {
     .then((foundPr) => {
       if (foundPr) {
         req.body.amount = foundPr.amount;
-        console.log("punda1");
         next();
       } else {
         res.status(404).json({
