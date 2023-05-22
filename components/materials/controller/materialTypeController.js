@@ -163,7 +163,9 @@ exports.checkAccessForGet = (req, res, next) => {
 
     if (
       usertype &&
-      usertype.includes("ADMIN", "REQUESTOR", "PURCHASER", "RECEIVER")
+      ["ADMIN", "REQUESTOR", "PURCHASER", "RECEIVER"].includes(
+        usertype.toUpperCase()
+      )
     ) {
       next();
     } else {
