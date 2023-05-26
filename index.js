@@ -21,6 +21,7 @@ const materialRoutes = require("./components/materials/routes/materialRoutes");
 const supplierRoutes = require("./components/supplier/routes/supplierRoutes");
 const poRoutes = require("./components/po/routes/poRoutes")
 const budgetRoutes = require("./components/budget/routes/budgetRoute")
+const deliveryRoutes = require("./components/delivery/routes/deliveryRoutes")
 
 //endpoints
 app.use("/api/users", userRoutes);
@@ -31,7 +32,7 @@ app.use("/api/material", materialRoutes);
 app.use("/api/suppliers", supplierRoutes);
 app.use("/api/po",poRoutes)
 app.use("/api/budget",budgetRoutes)
-
+app.use("/api/delivery",deliveryRoutes)
 
 //cors
 app.all((req, res, next) => {
