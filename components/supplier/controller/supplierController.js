@@ -323,3 +323,22 @@ exports.updateSupplierDetails = (req, res, next) => {
       });
     });
 };
+
+exports.validateSupplierForDeliveryOrder = (req, res, next) => {
+ 
+  Supplier.findOne({
+    supplierUsername: req.body.supplier,
+  })
+    .exec()
+    .then((supplierObj) => {
+      if (supplierObj) {
+        next()
+       
+      } else {
+        res.status(404).json({
+          error: "Supplier does not exist",
+          code: "SUPPLIER_DOES_NOT_EXIST"
+        });
+      }
+    });
+};
