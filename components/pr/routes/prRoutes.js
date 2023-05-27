@@ -46,4 +46,6 @@ routes.get("/get/declined/all", prController.fetchDeclinedPr);
 
 routes.get("/get/pending/all", prController.fetchPendingPr);
 
+routes.get("/get/new/all", prController.fetchNewPr);
+
 module.exports = routes;

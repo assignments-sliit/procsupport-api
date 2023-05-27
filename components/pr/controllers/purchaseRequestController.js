@@ -524,3 +524,29 @@ exports.fetchPendingPr = (req, res, next) => {
       });
     });
 };
+
+exports.fetchNewPr = (req, res, next) => {
+  PurchaseRequest.find({
+    status: "NEW",
+  })
+    .exec()
+    .then((newPr) => {
+      if (newPr.length > 0) {
+        res.status(200).json({
+          data: newPr,
+          code: "NEW_PR_FOUND",
+        });
+      } else {
+        res.status(404).json({
+          error: "No New Purchase Request found",
+          code: "NO_NEW_PR",
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+        code: "UNKNOWN_SERVER_ERROR",
+      });
+    });
+};
