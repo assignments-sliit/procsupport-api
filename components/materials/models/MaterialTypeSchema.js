@@ -13,6 +13,7 @@ const MaterialTypeSchema = new Schema({
     materialType:{
         type:String,
         required:true,
+        unique:true
     },
     uom:{
         type: String,

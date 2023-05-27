@@ -187,8 +187,17 @@ exports.checkAccessForGet = (req, res, next) => {
 //check logic
 exports.checkMaterialTypeExists = (req, res, next) => {
   const materialTypeId = req.body.materialTypeId || req.params.materialTypeId;
+  const materialType = req.body.materialType;
   MaterialType.findOne({
-    materialTypeId: materialTypeId,
+
+    $or:[
+      {
+        materialTypeId: materialTypeId,
+      },{
+        materialType: materialType
+      }
+    ]
+   
   })
     .exec()
     .then((foundMt) => {

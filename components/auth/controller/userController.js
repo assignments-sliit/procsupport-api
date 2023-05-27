@@ -372,3 +372,20 @@ exports.checkIfReceiver = (req, res, next) => {
     });
   }
 };
+
+// exports.signOut = (req,res,next)=>{
+//   const header = req.headers["authorization"];
+
+//   if (typeof header !== "undefined") {
+//     const bearer = header.split(" ");
+
+//     const token = bearer[1];
+
+//     req.token = token;
+//   }
+
+
+//   const token = req.token;
+
+//   jwt.decode(token).
+// }
