@@ -65,16 +65,18 @@ exports.updateDeliveryOrder = (req, res, next) => {
           },
           req.body
         ).then((updatedPo) => {
-          PurchaseOrder.findOne({
-            _id: foundPo._id,
-          })
-            .exec()
-            .then((updatedDelOrdBornAgain) => {
-              res.status(200).json({
-                updatedDeliveryOrder: updatedDelOrdBornAgain,
-                code: "DELIVERY_ORDER_UPDATED",
+          if (updatedPo) {
+            PurchaseOrder.findOne({
+              _id: foundPo._id,
+            })
+              .exec()
+              .then((updatedDelOrdBornAgain) => {
+                res.status(200).json({
+                  updatedDeliveryOrder: updatedDelOrdBornAgain,
+                  code: "DELIVERY_ORDER_UPDATED",
+                });
               });
-            });
+          }
         });
       } else {
         res.status(404).json({
@@ -91,23 +93,26 @@ exports.updateDeliveryOrder = (req, res, next) => {
     });
 };
 
-exports.getAllDeliveryOrders = (req,res,next) =>{
-  Delivery.find().exec().then((allorders)=>{
-    if(allorders.length < 1){
-      res.status(404).json({
-        error: "No Delivery Order Found",
-        code: "NO_DELIVERY_ORDER_FOUND",
+exports.getAllDeliveryOrders = (req, res, next) => {
+  Delivery.find()
+    .exec()
+    .then((allorders) => {
+      if (allorders.length < 1) {
+        res.status(404).json({
+          error: "No Delivery Order Found",
+          code: "NO_DELIVERY_ORDER_FOUND",
+        });
+      } else {
+        res.status(200).json({
+          data: allorders,
+          code: "DELIVERY_ORDERS_FOUND",
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+        code: "UNKNOWN_SERVER_ERROR",
       });
-    }else {
-      res.status(200).json({
-        data: allorders,
-        code: "DELIVERY_ORDERS_FOUND",
-      });
-    }
-  }).catch((err)=>{
-    res.status(500).json({
-      error: err,
-      code: "UNKNOWN_SERVER_ERROR",
     });
-  })
-}
+};
